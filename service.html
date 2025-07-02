@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOCS PARTNER | 止まっている時間を、未来の利益に変える資料作成支援</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Cybozu-Inspired Blue & White -->
+    <!-- Application Structure Plan: [FINAL REVISION 5] サービスセクションのレイアウトを更新。 -->
+    <!-- Visualization & Content Choices: [FINAL REVISION 5] 【サービス】→提供されたキャプチャを参考に、各サービスカードをアイコン、タイトル、詳細リスト、CTAボタンが一体となったレイアウトに変更。 -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            color: #1f2937; /* Darker gray text */
+        }
+        .nav-link.active {
+            color: #2563eb; /* Primary Blue */
+            font-weight: 700;
+        }
+        .hero-bg {
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 70%);
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .service-list li {
+            position: relative;
+            padding-left: 1.5rem; /* 24px */
+        }
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+        .marquee-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .marquee {
+            display: flex;
+            animation: marquee 80s linear infinite;
+            will-change: transform;
+        }
+        .marquee-wrapper:hover .marquee {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/90 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-200 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-black text-blue-600">DOCS PARTNER</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#services" class="nav-link text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">サービス</a>
+                <a href="#portfolio" class="nav-link text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">制作実績</a>
+                <a href="#pricing" class="nav-link text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">料金</a>
+                <a href="#creator" class="nav-link text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">制作者について</a>
+                <a href="#faq" class="nav-link text-gray-600 hover:text-blue-600 transition-colors text-sm font-medium">よくある質問</a>
+            </nav>
+            <a href="#contact" class="hidden md:inline-block btn-primary font-bold py-2 px-5 rounded-lg text-sm">
+                無料相談・お見積もり
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-3xl text-gray-600">≡</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4 border-t border-gray-200">
+            <a href="#services" class="block py-3 text-center nav-link">サービス</a>
+            <a href="#portfolio" class="block py-3 text-center nav-link">制作実績</a>
+            <a href="#pricing" class="block py-3 text-center nav-link">料金</a>
+            <a href="#creator" class="block py-3 text-center nav-link">制作者について</a>
+            <a href="#faq" class="block py-3 text-center nav-link">よくある質問</a>
+            <a href="#contact" class="block mt-4 text-center btn-primary font-bold py-3 px-6 rounded-lg">無料相談・お見積もり</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-bg pt-32 md:pt-40 pb-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-black text-gray-800 leading-tight">
+                    そのアイデア、<span class="gradient-text">一枚の資料から</span><br>
+                    ビジネスは加速する。
+                </h1>
+                <p class="mt-8 text-base md:text-lg text-gray-500 max-w-3xl mx-auto">
+                    私たちは、あなたの情熱とビジョンを、人を動かし結果を出す「戦略的資料」に翻訳します。<br>ミニマム1万円からの投資で、あなたのビジネスを次のステージへ導きます。
+                </p>
+                <div class="mt-12 flex justify-center items-center gap-4">
+                    <a href="#contact" class="btn-primary font-bold text-lg py-4 px-12 rounded-full shadow-lg">
+                        ビジネスを加速させる
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="problems" class="py-20">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">「現状維持」が引き起こす、見えない損失</h2>
+                     <p class="mt-4 text-gray-500">その一手間を惜しむだけで、これだけの機会を失っている可能性があります。</p>
+                 </div>
+                 <div class="grid md:grid-cols-3 gap-8">
+                     <div class="card p-8 text-center">
+                         <img src="https://placehold.co/120x120/e0f2fe/0ea5e9?text=Missed+Idea" alt="機会損失のイラスト" class="mx-auto mb-6 rounded-full">
+                         <h3 class="text-xl font-bold mb-2">機会損失</h3>
+                         <p class="text-gray-500 text-sm">魅力的な資料があれば掴めたはずの商談や資金調達のチャンスを逃している。</p>
+                     </div>
+                     <div class="card p-8 text-center">
+                         <img src="https://placehold.co/120x120/e0e7ff/4f46e5?text=Tangled+Clock" alt="時間的損失のイラスト" class="mx-auto mb-6 rounded-full">
+                         <h3 class="text-xl font-bold mb-2">時間的損失</h3>
+                         <p class="text-gray-500 text-sm">不慣れな作業に時間を浪費し、本来集中すべきコア業務の時間が奪われている。</p>
+                     </div>
+                     <div class="card p-8 text-center">
+                         <img src="https://placehold.co/120x120/fefce8/ca8a04?text=Cracked+Shield" alt="信用的損失のイラスト" class="mx-auto mb-6 rounded-full">
+                         <h3 class="text-xl font-bold mb-2">信用的損失</h3>
+                         <p class="text-gray-500 text-sm">質の低い資料は、あなたやあなたのビジネスのプロフェッショナリズムへの信頼を損なう。</p>
+                     </div>
+                 </div>
+                 <p class="text-center mt-16 text-xl font-semibold text-blue-600">
+                    その損失を「未来への希望」に変えるお手伝いをします。
+                 </p>
+             </div>
+        </section>
+
+        <section id="services" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">提供サービス</h2>
+                    <p class="mt-4 text-gray-500">お客様の「次の一歩」を具体化する、最適な成果物を制作します。</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-8 flex flex-col">
+                        <img src="https://placehold.co/120x120/e0f2fe/0ea5e9?text=Website" alt="Webサイト制作アイコン" class="mx-auto h-24 w-24 mb-6">
+                        <h3 class="text-2xl font-bold mb-4 text-center">Webサイト (HP/LP)</h3>
+                        <ul class="space-y-3 text-gray-600 text-sm service-list flex-grow">
+                            <li>新規事業のコンセプトを伝えるティザーサイト</li>
+                            <li>見込み客を獲得するためのリードジェネレーションLP</li>
+                            <li>採用候補者に企業の魅力を伝える採用サイト</li>
+                            <li>クラウドファンディングの支援を募るプロジェクトページ</li>
+                            <li>個人の専門性を示すポートフォリオサイト</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 btn-primary font-bold py-3 rounded-lg text-center">このサービスで相談する</a>
+                    </div>
+                    <div class="card p-8 flex flex-col">
+                        <img src="https://placehold.co/120x120/e0e7ff/4f46e5?text=Slides" alt="スライド資料アイコン" class="mx-auto h-24 w-24 mb-6">
+                        <h3 class="text-2xl font-bold mb-4 text-center">スライド資料</h3>
+                        <ul class="space-y-3 text-gray-600 text-sm service-list flex-grow">
+                            <li>大型受注を決めるための役員向け提案資料</li>
+                            <li>数千万円の資金調達を成功させる投資家向けピッチ資料</li>
+                            <li>参加者の満足度を最大化するウェビナー/セミナー資料</li>
+                            <li>メディアに取り上げられるためのプレスリリース用資料</li>
+                            <li>社内の理解と協力を得るための新規事業企画書</li>
+                            <li>株主総会で事業の成長を伝えるIR資料</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 btn-primary font-bold py-3 rounded-lg text-center">このサービスで相談する</a>
+                    </div>
+                    <div class="card p-8 flex flex-col">
+                        <img src="https://placehold.co/120x120/d1fae5/059669?text=Document" alt="A4一枚資料アイコン" class="mx-auto h-24 w-24 mb-6">
+                        <h3 class="text-2xl font-bold mb-4 text-center">A4一枚資料</h3>
+                        <ul class="space-y-3 text-gray-600 text-sm service-list flex-grow">
+                            <li>展示会で配布し、リードを獲得するサービス概要書</li>
+                            <li>一目で魅力が伝わる商品パンフレット/リーフレット</li>
+                            <li>複雑な情報を整理する業務マニュアル/ホワイトペーパー</li>
+                            <li>イベントやセミナーの集客力を高める告知チラシ</li>
+                            <li>飲食店の売上を向上させるメニューデザイン</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 btn-primary font-bold py-3 rounded-lg text-center">このサービスで相談する</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="portfolio" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">制作実績</h2>
+                    <p class="mt-4 text-gray-500">私たちが形にしてきた、お客様の「未来への希望」の一部をご覧ください。</p>
+                </div>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee">
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/F07167/FFFFFF?text=SaaS+Sales+Deck" alt="制作実績1" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">SaaS企業 営業資料</h3><p class="text-sm text-gray-500 mt-1">成約率向上のためのストーリー改訂</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/0081A7/FFFFFF?text=Startup+Pitch+Deck" alt="制作実績2" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">スタートアップ 投資家向けピッチ</h3><p class="text-sm text-gray-500 mt-1">5,000万円の資金調達を達成</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/00A7A7/FFFFFF?text=Consulting+LP+Design" alt="制作実績3" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">コンサルティングファーム LP</h3><p class="text-sm text-gray-500 mt-1">問い合わせ数を200%向上</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/403D39/FFFFFF?text=NPO+Annual+Report" alt="制作実績4" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">NPO法人 活動報告書</h3><p class="text-sm text-gray-500 mt-1">寄付者への感謝を伝えるデザイン</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/FBBF24/FFFFFF?text=Training+Manual+Design" alt="制作実績5" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">教育機関向け 研修資料</h3><p class="text-sm text-gray-500 mt-1">参加者の理解度を30%向上</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/34D399/FFFFFF?text=Real+Estate+Business+Plan" alt="制作実績6" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">不動産デベロッパー 事業計画書</h3><p class="text-sm text-gray-500 mt-1">銀行融資の承認を獲得</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Webinar+Presentation" alt="制作実績7" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">ウェビナー用 プレゼン資料</h3><p class="text-sm text-gray-500 mt-1">アンケート満足度95%を記録</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/F472B6/FFFFFF?text=Restaurant+Menu+Design" alt="制作実績8" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">飲食店 新メニュー紹介リーフレット</h3><p class="text-sm text-gray-500 mt-1">ターゲット商品の注文率UP</p></div></div>
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden mx-4">
+                        <img src="https://placehold.co/400x300/60A5FA/FFFFFF?text=Recruitment+Brochure" alt="制作実績9" class="w-full h-48 object-cover"><div class="p-5"><h3 class="font-bold">製造業 採用説明会資料</h3><p class="text-sm text-gray-500 mt-1">応募者数が前年比150%に</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">ご利用の流れ</h2>
+                    <p class="mt-4 text-gray-500">最新テクノロジーと専門家の知見を融合した、効率的なプロセス。</p>
+                </div>
+                <div class="grid md:grid-cols-4 gap-8 relative">
+                    <div class="text-center p-4">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-3xl font-bold mb-4">1</div>
+                        <h3 class="text-xl font-bold mb-2">お問い合わせ</h3>
+                        <p class="text-gray-500 text-sm">まずはフォームから、ご要望や課題を簡単にお聞かせください。</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-3xl font-bold mb-4">2</div>
+                        <h3 class="text-xl font-bold mb-2">AIチャットボット面談</h3>
+                        <p class="text-gray-500 text-sm">専用チャットボットが、事業内容やご要望を24時間いつでもヒアリングします。</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-3xl font-bold mb-4">3</div>
+                        <h3 class="text-xl font-bold mb-2">デザイン案のご提案</h3>
+                        <p class="text-gray-500 text-sm">3つのデザイン案をご提案。1つに絞り、テキストや写真の修正希望を伺います。</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-3xl font-bold mb-4">4</div>
+                        <h3 class="text-xl font-bold mb-2">修正・納品</h3>
+                        <p class="text-gray-500 text-sm">修正作業を行い、完成した高品質な成果物をご指定の形式で納品します。</p>
+                    </div>
+                </div>
+                <div class="mt-16 card p-8 border-2 border-yellow-400">
+                    <h3 class="text-2xl font-bold text-center text-yellow-600 mb-6">【アドオンメニュー】起業塾塾長による戦略ヒアリング</h3>
+                    <div class="grid md:grid-cols-4 gap-8 items-center">
+                        <div class="md:col-span-1 flex justify-center">
+                            <img src="https://placehold.co/150x150/403D39/FFFFFF?text=K.+Kakimoto" alt="柿本 健" class="rounded-full shadow-md">
+                        </div>
+                        <div class="md:col-span-3">
+                            <p class="text-gray-600">
+                                より深い戦略的インプットが必要な場合、起業塾「ミライガレージ」塾長・**柿本 健**による直接のヒアリングも可能です。
+                                数多くの起業家を成功に導いた経験から、あなたのビジネスの核心を突き、成功確率を最大化する資料戦略を共に練り上げます。（別途お見積もり）
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">料金プラン</h2>
+                    <p class="mt-4 text-gray-500">すべてのプランは、あなたの「次の一歩」を応援する価格から始まります。</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                    <div class="card p-8 flex flex-col h-full border-2 border-blue-500">
+                        <h3 class="text-2xl font-bold text-center">A4ペライチ</h3>
+                        <p class="text-5xl font-extrabold text-center mt-6 text-blue-600">¥10,000<span class="text-lg font-medium">〜</span></p>
+                        <p class="text-xs text-gray-500 text-center mt-1">税抜</p>
+                        <div class="mt-8 border-t pt-6">
+                            <h4 class="font-bold text-blue-700">この価格でできること：</h4>
+                            <p class="text-sm text-gray-600 mt-2">お客様からご提供いただいたテキスト原稿を元に、A4一枚の基本デザインを制作します。</p>
+                        </div>
+                        <div class="flex-grow"></div>
+                        <a href="#contact" class="block w-full text-center mt-8 btn-primary font-bold py-3 rounded-lg">まずは1万円で相談</a>
+                    </div>
+
+                    <div class="card p-8 flex flex-col h-full border-2 border-blue-500">
+                        <h3 class="text-2xl font-bold text-center">スライド資料</h3>
+                        <p class="text-5xl font-extrabold text-center mt-6 text-blue-600">¥10,000<span class="text-lg font-medium">〜</span></p>
+                        <p class="text-xs text-gray-500 text-center mt-1">税抜</p>
+                         <div class="mt-8 border-t pt-6">
+                            <h4 class="font-bold text-blue-700">この価格でできること：</h4>
+                            <p class="text-sm text-gray-600 mt-2">お客様からご提供いただいたテキスト原稿を元に、最大20ページのスライド資料を制作します。</p>
+                        </div>
+                        <div class="flex-grow"></div>
+                        <a href="#contact" class="block w-full text-center mt-8 btn-primary font-bold py-3 rounded-lg">まずは1万円で相談</a>
+                    </div>
+
+                    <div class="card p-8 flex flex-col h-full border-2 border-blue-500">
+                        <h3 class="text-2xl font-bold text-center">HP / LP制作</h3>
+                        <p class="text-5xl font-extrabold text-center mt-6 text-blue-600">¥10,000<span class="text-lg font-medium">〜</span></p>
+                        <p class="text-xs text-gray-500 text-center mt-1">税抜</p>
+                         <div class="mt-8 border-t pt-6">
+                            <h4 class="font-bold text-blue-700">この価格でできること：</h4>
+                            <p class="text-sm text-gray-600 mt-2">ヒアリング内容を元に、シングルページのWebサイト（HP/LP）を最後まで制作します。</p>
+                        </div>
+                        <div class="flex-grow"></div>
+                        <a href="#contact" class="block w-full text-center mt-8 btn-primary font-bold py-3 rounded-lg">まずは1万円で相談</a>
+                    </div>
+                </div>
+                 <p class="text-center mt-8 text-sm text-gray-500">上記以上のページ数、構成案作成、ライティング、オリジナルデザイン等はご要望に応じて別途お見積もりいたします。</p>
+            </div>
+        </section>
+
+        <section id="creator" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">制作者について</h2>
+                </div>
+                 <div class="card p-8 md:p-12 max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-3 gap-10 items-center">
+                        <div class="md:col-span-1">
+                            <img src="https://g2dx.com/wp-content/uploads/2025/07/IMG_4518.jpg" alt="制作者 辻 実成" class="w-48 h-48 object-cover rounded-full mx-auto shadow-lg border-4 border-white">
+                        </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-3xl font-bold">辻 実成（なりさん）</h3>
+                            <p class="text-md text-blue-600 font-semibold mt-1">技術開発・AI活用担当 / AIの力で、あなたのビジネスを加速させる実践家。</p>
+                            <p class="mt-6 text-gray-600 text-sm leading-relaxed">
+                                理論だけでなく、中小企業の現場でAIを徹底的に活用し、売上を劇的に向上させてきた「実践家」として、難解な技術を「現場で使える武器」に変えて提供します。東京大学松尾研究室AI講座修了、生成AI活用普及協会（GUGA）公式講師として、延べ1,500名以上への研修実績を持つAIのプロフェッショナルです。
+                            </p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="low-price-reason" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">AIの専門家がいるからこそ、<br>実現できた価格です。</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6">従来のWeb制作では、デザイナーやエンジニアの人件費が多くを占めていました。DOCS PARTNERでは、AIのプロである辻が最新AI技術「バイブコーディング」を駆使し、制作工程の大部分を自動化・効率化。これにより、人の手が必要不可欠な「ヒアリング」や「最終調整」といったクリエイティブな部分にリソースを集中させることが可能になりました。</p>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <p class="font-bold text-blue-800">「AIによる効率化」×「人による丁寧なサポート」</p>
+                            <p class="text-sm text-gray-600">これが、高品質と低価格を両立できる秘密です。</p>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 flex justify-center">
+                        <img src="https://placehold.co/400x400/1e3a8a/dbeafe?text=Human+and+AI+Collaboration" alt="AI専門家による効率化のイメージ" class="rounded-2xl shadow-xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">よくある質問</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                            <span class="font-bold text-lg">なぜそんなに安いのですか？</span>
+                            <span class="faq-arrow text-blue-500 text-2xl">↓</span>
+                        </button>
+                        <div class="faq-answer hidden p-6 border-t border-gray-200 text-gray-600">
+                            <p>最新の生成AI技術「バイブコーディング」をAI専門家が活用し、制作工程を大幅に効率化しているためです。詳しくは<a href="#low-price-reason" class="text-blue-600 underline">「低価格の理由」セクション</a>をご覧ください。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                            <span class="font-bold text-lg">修正は何回まで可能ですか？</span>
+                            <span class="faq-arrow text-blue-500 text-2xl">↓</span>
+                        </button>
+                        <div class="faq-answer hidden p-6 border-t border-gray-200 text-gray-600">
+                            <p>デザイン案確定後、テキストや写真の修正は1回まで基本料金内で対応いたします。2回目以降の修正や、デザインの大幅な変更は別途お見積もりとなります。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                            <span class="font-bold text-lg">どのような形式で納品されますか？</span>
+                            <span class="faq-arrow text-blue-500 text-2xl">↓</span>
+                        </button>
+                        <div class="faq-answer hidden p-6 border-t border-gray-200 text-gray-600">
+                            <p>ご要望に応じて、PowerPoint(.pptx)、PDF、HTML/CSSファイルなど、すぐに使える形式で納品いたします。その他の形式についてもお気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                     <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                            <span class="font-bold text-lg">契約前に相談することは可能ですか？</span>
+                            <span class="faq-arrow text-blue-500 text-2xl">↓</span>
+                        </button>
+                        <div class="faq-answer hidden p-6 border-t border-gray-200 text-gray-600">
+                            <p>はい、もちろんです。初回のご相談・お見積もりは無料です。お客様の課題やご要望を詳しくお伺いし、最適なプランをご提案させていただきますので、まずはお気軽にお問い合わせください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-blue-700 text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold">さあ、停滞に終止符を。</h2>
+                    <p class="mt-4 text-lg text-blue-200 max-w-2xl mx-auto">まずは5分、あなたの課題をお聞かせください。ビジネスを前進させるための最適な解決策を無料でご提案します。</p>
+                </div>
+                <div class="max-w-2xl mx-auto mt-12 bg-white text-gray-800 rounded-2xl shadow-2xl p-8">
+                    <form>
+                        <div class="mb-5">
+                            <label for="name" class="block text-gray-700 font-bold mb-2 text-sm">お名前</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="email" class="block text-gray-700 font-bold mb-2 text-sm">メールアドレス</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="service_type" class="block text-gray-700 font-bold mb-2 text-sm">ご希望のサービス</label>
+                            <select id="service_type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                                <option>選択してください</option>
+                                <option>A4ペライチ</option>
+                                <option>スライド資料</option>
+                                <option>HP/LP制作</option>
+                                <option>まずは1万円で相談したい</option>
+                                <option>専門家ヒアリング(アドオン)</option>
+                                <option>その他</option>
+                            </select>
+                        </div>
+                        <div class="mb-8">
+                            <label for="details" class="block text-gray-700 font-bold mb-2 text-sm">ご相談内容</label>
+                            <textarea id="details" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="例：来月のウェビナーで使う30ページほどのスライド作成をお願いしたいです。"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-yellow-500 text-white font-bold text-lg py-4 px-16 rounded-full hover:bg-yellow-600 transition-all shadow-lg transform hover:scale-105">
+                                無料相談を申し込む
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 DOCS PARTNER. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+            mobileMenu.querySelectorAll('a').forEach(link => navLinks.push(link));
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                     if(!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                     }
+                });
+            });
+
+            const sections = document.querySelectorAll('section');
+            const headerNavLinks = document.querySelectorAll('#header .nav-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    
+                    if (entry.isIntersecting) {
+                        headerNavLinks.forEach(link => link.classList.remove('active'));
+                        if (navLink) {
+                            navLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            const timeSavedChartCtx = document.getElementById('timeSavedChart');
+            if(timeSavedChartCtx) {
+                new Chart(timeSavedChartCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['事業成長への投資', 'マーケティング・営業', '停滞・ノンコア業務'],
+                        datasets: [{
+                            label: '時間の使い方',
+                            data: [50, 30, 20],
+                            backgroundColor: [
+                                '#2563eb', // Primary Blue
+                                '#3b82f6', // Lighter Blue
+                                '#f59e0b'  // Amber/Yellow
+                            ],
+                            borderColor: '#f8fafc', // bg-gray-50
+                            borderWidth: 6,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#374151',
+                                    padding: 20,
+                                    font: {
+                                       family: "'Inter', 'Noto Sans JP', sans-serif",
+                                       size: 12
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                 backgroundColor: '#1f2937',
+                                 titleFont: { size: 16 },
+                                 bodyFont: { size: 14 },
+                                 padding: 12,
+                                 cornerRadius: 8,
+                                 callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += context.parsed + '%';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    question.classList.toggle('open');
+                    answer.classList.toggle('hidden');
+                });
+            });
+
+            const marquee = document.querySelector('.marquee');
+            if (marquee) {
+                const items = Array.from(marquee.children);
+                items.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    marquee.appendChild(clone);
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>
