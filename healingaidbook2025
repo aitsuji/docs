@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>補聴器“脳トレ”試聴サポート・ブック スライド (P1-48)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/white.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #00458B;
+            --medium-blue: #0075C4;
+            --bright-blue: #00A8F3;
+            --light-blue: #89D6FF;
+            --teal-dark: #0F766E;
+            --teal-light: #CCFBF1;
+        }
+        .reveal {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #374151; /* gray-700 */
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 900;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+        .reveal .slides section {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .page-header {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 0.875rem; /* 14px */
+            font-weight: 700;
+            color: #9ca3af; /* gray-400 */
+        }
+        .key-message {
+            @apply text-2xl font-bold bg-teal-50 text-teal-800 p-4 rounded-lg text-center my-6;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            max-height: 450px;
+            margin: 0 auto;
+        }
+        .flowchart-arrow {
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        .flowchart-arrow:not(:last-child)::after {
+            content: '▼';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: var(--light-blue);
+        }
+        .summary-item {
+            @apply flex items-start p-4 bg-gray-50 rounded-lg text-left;
+        }
+        .summary-icon {
+            @apply flex-shrink-0 w-8 h-8 text-2xl mr-4;
+            color: var(--medium-blue);
+        }
+        .column-card {
+            @apply bg-amber-50 border-2 border-amber-200 p-6 rounded-2xl my-4 text-left;
+        }
+        .roadmap-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-top: 40px;
+        }
+        .roadmap-line {
+            position: absolute;
+            top: 40px;
+            left: 5%;
+            width: 90%;
+            height: 4px;
+            background-color: var(--light-blue);
+            z-index: -1;
+        }
+        .roadmap-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 15%;
+        }
+        .roadmap-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: white;
+            border: 4px solid var(--medium-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+        .roadmap-step.active .roadmap-icon {
+            background-color: var(--medium-blue);
+            color: white;
+        }
+        .roadmap-title {
+            font-weight: bold;
+            color: var(--dark-blue);
+        }
+        .balance-scale {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        .balance-arm {
+            width: 450px;
+            height: 10px;
+            background-color: var(--medium-blue);
+            position: relative;
+            transform-origin: center;
+            transition: transform 0.5s;
+        }
+        .balance-pan {
+            width: 150px;
+            height: auto;
+            background-color: var(--light-blue);
+            border: 3px solid var(--medium-blue);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+        }
+        .balance-pan.left { left: -75px; }
+        .balance-pan.right { right: -75px; }
+        .balance-base {
+            width: 15px;
+            height: 75px;
+            background-color: var(--dark-blue);
+            position: relative;
+            top: -75px;
+        }
+        .balance-fulcrum::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 20px solid var(--dark-blue);
+        }
+        .qa-box {
+            @apply p-6 bg-gray-50 rounded-xl mt-4 text-left;
+        }
+        .qa-box .question {
+            @apply text-2xl font-bold;
+            color: var(--dark-blue);
+        }
+        .qa-box .answer {
+             @apply text-2xl font-bold mt-2;
+             color: var(--teal-dark);
+        }
+        .comparison-table {
+            @apply grid grid-cols-2 gap-4 mt-6;
+        }
+        .comparison-card {
+            @apply p-4 bg-white rounded-lg shadow;
+        }
+        .comparison-card h4 {
+            @apply text-xl font-bold text-center;
+            color: var(--medium-blue);
+        }
+         .comparison-card ul {
+            @apply mt-2 list-disc list-inside text-left;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section class="text-center"><h1 class="!text-6xl" style="color: var(--dark-blue);">補聴器“脳トレ”<br>試聴サポート・ブック</h1><p class="mt-8 text-2xl text-gray-600">インフォグラフィック スライド版</p><p class="mt-12 text-lg text-gray-500">キーボードの矢印キーで操作してください</p></section>
+            <section><p class="page-header">P.1 はじめに</p><h2>4人に1人が経験する「失敗」を、繰り返さないために</h2><div class="grid grid-cols-2 gap-8 items-center text-left"><div class="text-lg"><p>この度は、補聴器の試聴にお越しいただき、誠にありがとうございます｡</p><p class="mt-4">補聴器購入者の4人に1人は、購入した補聴器を使わなくなっている、という事実があります｡</p><p class="mt-4">「高価な買い物をしたのに、結局タンスの肥やしになってしまった…」 あなたも、そんな不安をお持ちかもしれません｡</p><p class="mt-4 font-bold">ご安心ください。この本は、あなたがその「4人に1人」にならないために生まれました｡</p></div><div><div class="chart-container !h-[40vh]"><canvas id="p1_failureRateChart"></canvas></div></div></div></section>
+            <section><p class="page-header">P.2 脳トレ</p><h2>1ヶ月の「脳トレ」、はじめましょう</h2><p class="text-xl text-center max-w-4xl mx-auto">多くの方が抱く「補聴器は、つければすぐに、昔のようにハッキリ聞こえる魔法の道具だ」という期待｡ もしそう思われていたら、一度その考えを脇に置いてみてください｡</p><div class="key-message !text-3xl">補聴器との出会いは「脳の新しいトレーニング」、すなわち<br><span class="text-4xl">「脳トレ」</span>の始まりです｡</div><div class="text-center text-lg"><p>今まで聞こえなかった音が耳から入ることで、あなたの脳は少し驚き、戸惑います｡ その驚きや戸惑いに、脳がゆっくりと慣れていく時間が必要なのです｡</p><p class="mt-4 font-bold">だからこそ、私たちは「1ヶ月間の試聴」を何よりも大切にしています｡</p></div></section>
+            <section class="!bg-teal-50"><p class="page-header">P.3 第1章 導入</p><div class="flex flex-col justify-center h-full text-center"><h2 class="!text-6xl" style="color: var(--dark-blue);">第1章<br>なぜ、今、あなたに<br>補聴器が必要なのか？</h2><div class="w-32 h-1.5 mx-auto my-8" style="background-color: var(--medium-blue);"></div><p class="text-xl max-w-2xl mx-auto">この章は、これからの1ヶ月間を成功させるための、最も大切な土台となる知識が詰まっています｡</p></div></section>
+            <section><p class="page-header">P.4 聞こえと脳の関係</p><h2>聞こえの低下が招く、最も避けたい未来</h2><p class="text-xl text-center max-w-3xl mx-auto">実は、聞こえの低下は、あなたの脳の働き、そして未来の生活の質にまで深く関わっています｡</p><div class="key-message">最近の研究で、対策可能な認知症の危険因子の中で「難聴」が<span class="text-2xl">最大</span>であることが分かってきました｡</div><div class="mt-8 max-w-md mx-auto text-center text-lg"><div class="flowchart-arrow"><div class="p-3 bg-gray-50 rounded-lg shadow-md"><strong>STEP 1: 聞こえの低下</strong></div></div><div class="flowchart-arrow"><div class="p-3 bg-gray-50 rounded-lg shadow-md"><strong>STEP 2: 脳への「音の刺激」が減少</strong></div></div><div class="flowchart-arrow"><div class="p-3 bg-gray-50 rounded-lg shadow-md"><strong>STEP 3: コミュニケーションの減少</strong></div></div><div class="flowchart-arrow"><div class="p-3 bg-gray-50 rounded-lg shadow-md"><strong>STEP 4: 社会的な孤立と意欲の低下</strong></div></div><div><div class="p-3 bg-red-100 text-red-800 font-bold rounded-lg shadow-md">STEP 5: 認知機能低下のリスク増大</div></div></div></section>
+            <section><p class="page-header">P.5 補聴器の役割</p><h2>補聴器は、未来のあなたの脳を守る「防具」です</h2><div class="grid grid-cols-2 gap-8 items-center text-left"><div class="text-center"><p class="text-8xl">🧠</p><p class="text-6xl my-2">+</p><p class="text-8xl">🛡️</p><p class="text-3xl mt-4 font-bold" style="color:var(--medium-blue)">予防的な道具</p></div><div class="text-lg"><p>「まだ大丈夫」と思っている間にも、脳への刺激は静かに減り続けているかもしれません｡</p><p class="mt-4">補聴器は、単に音を補うだけの道具ではありません｡ 脳に適切な「音の刺激」を再び届け、脳の活動を活発に保つための<span class="font-bold">「予防的な道具」</span>なのです｡</p><div class="key-message mt-6 !text-2xl">聞こえの低下に気づいた「今」こそ、対策を始める絶好のタイミングなのです｡</div></div></div></section>
+            <section><p class="page-header">P.6 WHY NOW?</p><h2>まず、現実と向き合うことから</h2><div class="grid grid-cols-2 gap-8 items-center"><div class="text-lg text-left"><p>補聴器との旅を始めるにあたり、まず受け止めるべき大切なことがあります。</p><div class="key-message !text-3xl mt-6">失われた聴力そのものは、<br>元には戻りません。</div><p>私たちの身体が年齢と共に変化するように、聴力もまた変化します。補聴器は、それを魔法のように元通りにする道具ではないのです。</p></div><div class="text-center"><img src="https://placehold.co/400x400/E0F2F7/00458B?text=穏やかな表情の人物" class="rounded-full shadow-lg mx-auto" alt="穏やかな表情で前を見つめるシニアのイメージ画像"></div></div></section>
+            <section><p class="page-header">P.7 WHY NOW?</p><h2>あなたの未来を守る「下げ止め」という希望</h2><div class="key-message">補聴器の最大の役割は、低下の坂道を緩やかにする<span class="text-2xl">「下げ止め」</span>です。</div><div><div class="chart-container h-[60vh]"><canvas id="p7_declineCurveChart"></canvas></div></div></section>
+            <section><p class="page-header">P.8 あなたの聞く力</p><h2>あなたの「聞く力」は、3つの力の組み合わせです</h2><p class="text-xl text-center">「聞こえにくい」と一言で言っても、その中身は一つではありません。</p><div class="grid grid-cols-3 gap-6 text-center mt-8"><div class="p-6 bg-slate-50 rounded-lg"><p class="text-7xl">①</p><h3 class="!text-2xl font-bold my-2">音を感じる力<br>(聴力)</h3><p class="text-lg">小さい音や、聞き取りにくい高さの音を感じ取る能力。</p></div><div class="p-6 bg-slate-50 rounded-lg"><p class="text-7xl">②</p><h3 class="!text-2xl font-bold my-2">言葉を理解する力<br>(語音明瞭度)</h3><p class="text-lg">音が言葉として聞き分けられる能力。「さかな」と「たかな」など。</p></div><div class="p-6 bg-slate-50 rounded-lg"><p class="text-7xl">③</p><h3 class="!text-2xl font-bold my-2">音を選ぶ力<br>(脳の選択能力)</h3><p class="text-lg">雑音の中から聞きたい会話だけを意識して選び出す能力。</p></div></div></section>
+            <section><p class="page-header">P.9 聞く力の役割分担</p><h2>補えること、あなたの力が必要なこと</h2><p class="text-xl text-center">3つの力には、それぞれ得意な担当がいます。</p><div class="grid grid-cols-2 gap-8 items-start mt-8"><div class="p-6 bg-blue-50 rounded-lg"><h3 class="font-bold text-2xl text-center">✅ 補聴器が得意なこと</h3><ul class="text-lg mt-4 space-y-4"><li class="flex items-start"><span class="text-3xl mr-3">🦾</span><div><strong>音を届ける（聞く力①）</strong><br>あなたに最適な大きさで、音を届けます。</div></li><li class="flex items-start"><span class="text-3xl mr-3">🦾</span><div><strong>音を選びやすくする（聞く力③）</strong><br>雑音を抑え、会話を聞きやすくします。</div></li></ul></div><div class="p-6 bg-red-50 rounded-lg"><h3 class="font-bold text-2xl text-center">🌟 あなたの力が必要なこと</h3><ul class="text-lg mt-4 space-y-4"><li class="flex items-start"><span class="text-3xl mr-3">🧠</span><div><strong>言葉を理解する（聞く力②）</strong><br>届いた音を言葉として理解するのは、あなたの脳の役割です。</div></li></ul></div></div></section>
+            <section><p class="page-header">P.10 役割分担</p><h2>補聴器とあなたの「脳」の役割分担</h2><p class="text-xl text-center">快適な聞こえは、素晴らしいチームワークで成り立っています｡</p><div class="mt-8 flex justify-center items-center gap-8 md:gap-16"><div class="text-center"><p class="text-8xl">🧠</p><p class="text-4xl font-bold mt-4" style="color:var(--dark-blue)">あなたの脳<br>(主役)</p><p class="text-lg mt-2">言葉を「理解」する</p></div><p class="text-7xl font-bold text-gray-300">+</p><div class="text-center"><p class="text-8xl">🦾</p><p class="text-4xl font-bold mt-4" style="color:var(--medium-blue)">補聴器<br>(サポーター)</p><p class="text-lg mt-2">音を届け、雑音を抑える</p></div></div><p class="key-message mt-12">補聴器は、あなたの脳が主役として輝くための「舞台装置」です｡</p></section>
+            <section><p class="page-header">P.11 価格と性能</p><h2>価格と性能、何が違うのか？</h2><div class="key-message">値段の違いは、一言でいえば「騒音の中での快適さ」です。</div><p class="text-center text-lg">価格差は、聞く力③（音を選ぶ力）をサポートするチップの性能差です。</p><div><div class="chart-container h-[55vh]"><canvas id="p11_pricePerformanceChart"></canvas></div></div></section>
+            <section><p class="page-header">P.12 補聴器で変わる世界</p><h2>補聴器があると、こんなに世界が変わります</h2><p class="text-xl text-center mb-6">聞き逃していた大切な音や声が、再びあなたの日々を彩ります。</p><div class="grid grid-cols-4 gap-4"><div class="text-center"><img src="https://placehold.co/250x180/E0F2F7/00458B?text=家族の食卓" class="rounded-lg shadow-md mx-auto" alt="家族の食卓のイメージ画像"><p class="mt-2 font-bold text-sm">家族の笑い声</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F2F7/00458B?text=孫との会話" class="rounded-lg shadow-md mx-auto" alt="孫との会話のイメージ画像"><p class="mt-2 font-bold text-sm">お孫さんのささやき声</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F2F7/00458B?text=友人との談笑" class="rounded-lg shadow-md mx-auto" alt="友人との談笑のイメージ画像"><p class="mt-2 font-bold text-sm">友人との楽しいおしゃべり</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F2F7/00458B?text=自然の音" class="rounded-lg shadow-md mx-auto" alt="自然の音のイメージ画像"><p class="mt-2 font-bold text-sm">小鳥のさえずり</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F7FA/006064?text=テレビの音声" class="rounded-lg shadow-md mx-auto" alt="テレビの音声のイメージ画像"><p class="mt-2 font-bold text-sm">テレビのセリフ</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F7FA/006064?text=講演会" class="rounded-lg shadow-md mx-auto" alt="講演会のイメージ画像"><p class="mt-2 font-bold text-sm">講演会の内容</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F7FA/006064?text=病院での説明" class="rounded-lg shadow-md mx-auto" alt="病院での説明のイメージ画像"><p class="mt-2 font-bold text-sm">お医者さんの説明</p></div><div class="text-center"><img src="https://placehold.co/250x180/E0F7FA/006064?text=店員との会話" class="rounded-lg shadow-md mx-auto" alt="店員との会話のイメージ画像"><p class="mt-2 font-bold text-sm">お店でのやり取り</p></div><div class="text-center"><img src="https://placehold.co/250x180/FFF3E0/E65100?text=電話の音声" class="rounded-lg shadow-md mx-auto" alt="電話の音声のイメージ画像"><p class="mt-2 font-bold text-sm">電話の向こうの声</p></div><div class="text-center"><img src="https://placehold.co/250x180/FFF3E0/E65100?text=踏切の音" class="rounded-lg shadow-md mx-auto" alt="踏切の音のイメージ画像"><p class="mt-2 font-bold text-sm">踏切や車の接近音</p></div><div class="text-center"><img src="https://placehold.co/250x180/FFF3E0/E65100?text=料理の音" class="rounded-lg shadow-md mx-auto" alt="料理の音のイメージ画像"><p class="mt-2 font-bold text-sm">お湯が沸く音</p></div><div class="text-center"><img src="https://placehold.co/250x180/FFF3E0/E65100?text=雨の音" class="rounded-lg shadow-md mx-auto" alt="雨の音のイメージ画像"><p class="mt-2 font-bold text-sm">窓を打つ雨の音</p></div></div></section>
+            <section><p class="page-header">P.13 コラム</p><div class="column-card h-full flex flex-col justify-center"><h2 class="text-4xl font-bold text-amber-800">ご家族・ご友人の方へ</h2><div class="key-message !bg-amber-100 !text-amber-900 mt-6 !text-3xl">最高のサポートは「大きな声」ではありません｡<br>「ゆっくり話せばいいんです」</div><p class="text-lg leading-relaxed mt-6">言葉が聞き取りにくいのは、多くの場合「音量」の問題ではなく、「言葉を理解するスピード」の問題です｡</p><p class="text-xl leading-relaxed mt-6 font-bold text-center">ぜひ、今日から「いつも通りの声の大きさで、少しだけゆっくり、そしてハッキリと」話しかけてみてください｡</p></div></section>
+            <section><p class="page-header">P.14 第1章のまとめ</p><h2>試聴前に知るべき4つのこと</h2><div class="space-y-6 text-lg"><div class="summary-item"><div class="summary-icon">1.</div><div><h3 class="font-bold text-xl">補聴器は「脳」のため</h3><p>聞こえの低下は脳の働きと密接に関係しており、補聴器は脳を元気に保つ「予防」の道具です｡</p></div></div><div class="summary-item"><div class="summary-icon">2.</div><div><h3 class="font-bold text-xl">目的は「下げ止め」</h3><p>聴力を元に戻すのではなく、今の力を維持し、低下のスピードを緩やかにすることが最大の目的です｡</p></div></div><div class="summary-item"><div class="summary-icon">3.</div><div><h3 class="font-bold text-xl">主役はあなたの「脳」</h3><p>補聴器は、あなたの脳が言葉を理解しやすくなるよう手助けをするサポーターです｡</p></div></div><div class="summary-item"><div class="summary-icon">4.</div><div><h3 class="font-bold text-xl">価格差は「快適さ」</h3><p>値段の違いは、主に「騒がしい場所」でどれだけ快適に会話できるか、という性能の違いです｡</p></div></div></div></section>
+            <section class="!bg-teal-50"><p class="page-header">P.15 第2章 導入</p><div class="flex flex-col justify-center h-full text-center"><h2 class="!text-6xl" style="color: var(--dark-blue);">第2章<br>実践！「脳トレ」<br>試聴プログラム</h2><div class="w-32 h-1.5 mx-auto my-8" style="background-color: var(--medium-blue);"></div><p class="text-xl max-w-3xl mx-auto">ここからが、あなただけの1ヶ月間の旅の始まりです。<br>このロードマップに沿って、最高のパートナーを見つけましょう！</p><div class="roadmap-container mt-12"><div class="roadmap-line"></div><div class="roadmap-step"><div class="roadmap-icon">第0回</div><div class="roadmap-title mt-2">データ<br>収集</div></div><div class="roadmap-step"><div class="roadmap-icon">第1回</div><div class="roadmap-title mt-2">パートナー<br>選び</div></div><div class="roadmap-step"><div class="roadmap-icon">第2回</div><div class="roadmap-title mt-2">比較体験</div></div><div class="roadmap-step"><div class="roadmap-icon">第3-4回</div><div class="roadmap-title mt-2">実生活で<br>挑戦</div></div><div class="roadmap-step"><div class="roadmap-icon">第5回</div><div class="roadmap-title mt-2">最終決定</div></div></div></div></section>
+            <section><p class="page-header">P.16【第0回】目的</p><h2>あなたの「生活音」をデータ化します</h2><div class="grid grid-cols-2 gap-8 items-center"><div class="text-lg text-left"><p>本日お貸しする最初の補聴器。これは補聴器“候補”ではなく、あなたの生活を私たちに教えてくれる<span class="font-bold text-xl" style="color: var(--medium-blue);">「記録装置」</span>です。</p><p class="mt-4">あなたが普段どんな音環境で過ごしているかを客観的なデータとして記録し、最適な一台を見つけるための<span class="font-bold">「羅針盤」</span>を作ります。</p></div><div class="flex flex-col items-center justify-center p-4"><div class="text-8xl">🦾</div><div class="text-4xl my-4">→</div><div class="text-8xl">💻</div><p class="mt-4 text-xl font-bold" style="color: var(--dark-blue);">生活音データを収集</p></div></div><div class="key-message !text-2xl mt-8">まず1週間、あなたの生活を教えてください。</div></section>
+            <section><p class="page-header">P.17【第0回】お願い</p><h2>この1週間でお願いしたい、たった一つのこと</h2><div class="key-message !text-3xl">良し悪しを判断せず、普段通りに。<br>「しんどくないか」だけを感じてください。</div><div class="grid grid-cols-2 gap-8 items-center text-left"><div class="text-center"><p class="text-9xl">🧗</p><p class="text-2xl font-bold mt-4">最初の1ヶ月は「岩山」登り</p></div><div class="text-lg"><p>今まで聞こえなかった多くの音が聞こえ、脳が疲れるのは当然のことです。</p><p class="mt-4">食器の音、周りの雑音…それらは10年前には聞こえていた音。脳が音に慣れるための大切なステップです。</p><p class="mt-4 font-bold">「最初は少し大変かも？」という気持ちで、焦らず始めましょう。</p></div></div></section>
+            <section><p class="page-header">P.18【第1回】目的</p><h2>データに基づき、最初の「脳トレパートナー」を決めます</h2><p class="text-xl text-center">1週間のデータで、あなたの生活環境が「見える化」されました。</p><div class="grid grid-cols-2 gap-4 items-center"><div class="text-lg text-left"><p>この客観的データとあなたの要望を元に、いよいよ本格的な試聴で使うパートナーを選びます。</p><p class="mt-4 font-bold">例えば、このデータの場合「静かな環境」が90%ですが、残りの「会話のある環境10%」をどれだけ快適にしたいかが、機種選びのポイントになります。</p></div><div><div class="chart-container !h-[45vh]"><canvas id="p18_lifeenvChart"></canvas></div></div></div></section>
+            <section><p class="page-header">P.19【第1回】なぜ？</p><h2>なぜ最初は「高性能」から試すのが近道なのか？</h2><div class="key-message !text-3xl">最初は“おせっかい”なくらい高性能な機種で、<br>脳を<span class="text-4xl">楽</span>させてあげましょう。</div><div class="grid grid-cols-2 gap-8 items-center text-left"><div class="text-lg"><p>まだ音の洪水に慣れていない脳にとって、雑音と会話を自分で切り分ける作業は大きな負担です。</p><p class="mt-4">その負担が大きいと「やはり補聴器はうるさい」と挫折に繋がりかねません。</p><p class="mt-4 font-bold">まず高性能機で「聞こえる感覚」を楽に思い出し、脳が慣れてから比較することで、あなたに必要な性能が分かってきます。</p></div><div class="text-center p-4"><p class="text-9xl relative">🧠<span class="absolute -top-4 -right-4 text-6xl animate-pulse">❤️‍🩹</span></p><p class="text-2xl font-bold mt-4">疲れた脳を、優しくサポート</p></div></div></section>
+            <section><p class="page-header">P.20【第2回】目的①</p><h2>「聞こえ」の効果を、客観的な点数で見ましょう</h2><p class="text-xl text-center max-w-3xl mx-auto">補聴器をつけた状態での言葉の聞き取りテストで、効果を「見える化」します。</p><div class="chart-container h-[60vh]"><canvas id="p20_clarityScoreChart"></canvas></div><div class="key-message mt-8 !text-2xl">たとえ100点でなくても「迷える」ようになったこと自体が、脳が働き始めた素晴らしい証拠です。</div></section>
+            <section><p class="page-header">P.21【第2回】目的②</p><h2>「比較体験」で“自分軸”をつくりましょう</h2><p class="text-xl text-center">性能ランクの違う機種を試し「違い」を体感することで、あなただけの「ものさし」が生まれます。</p><div class="balance-scale"><div class="relative"><div class="balance-arm" id="balanceArm"><div class="balance-pan left"><p class="font-bold">高性能機での快適さ</p>(風の音は静か)</div><div class="balance-pan right"><p class="font-bold">ランクを下げた時の感覚</p>(少しざわつく？)</div></div><div class="balance-fulcrum"></div><div class="balance-base"></div></div></div><div class="key-message mt-8 !text-2xl">「私にはこの機能が必要」「これなら気にならない」<br>その感覚が、最高のパートナー選びに繋がります。</div></section>
+            <section><p class="page-header">P.22【第3-4回】目的</p><h2>あなたが「本当に聞きたい」場所へ！</h2><div class="key-message !text-3xl">さあ、あなたが補聴器を使おうと思った<br>「きっかけの場面」へ出かけましょう！</div><p class="text-xl text-center">試聴の総仕上げです。友人との会食、趣味の集まり、家族団らん…。<br>実際の生活シーンで、会話の楽しさがどう変わるか、存分に味わってみてください。</p><div class="grid grid-cols-3 gap-4 mt-8"><img src="https://placehold.co/400x300/89D6FF/00458B?text=友人との会食" class="rounded-lg shadow-md w-full h-auto" alt="友人との会食のイメージ画像"><img src="https://placehold.co/400x300/00A8F3/FFFFFF?text=趣味の集まり" class="rounded-lg shadow-md w-full h-auto" alt="趣味の集まりのイメージ画像"><img src="https://placehold.co/400x300/0075C4/FFFFFF?text=家族団らん" class="rounded-lg shadow-md w-full h-auto" alt="家族団らんのイメージ画像"></div></section>
+            <section><p class="page-header">P.23【第3-4回】ご家族へ</p><div class="column-card !bg-rose-50 !border-rose-200 h-full flex flex-col justify-center"><h2 class="text-4xl font-bold text-rose-800">ご家族の皆様へ、もう一度だけお願いです</h2><div class="key-message !bg-rose-100 !text-rose-900 mt-6 !text-3xl">ぜひ一度、ご本人様と<br>一緒にご来店ください。</div><div class="flex items-center gap-8 mt-6"><div class="w-1/2 text-lg"><p>試聴の後半戦こそ、周囲のサポートが重要です。</p><p class="mt-4">ご家族が同席されることで、ご本人は大きな安心感を得られます。チーム一丸となって、この大切な期間を乗り越えましょう。</p><p class="mt-4 font-bold text-center">「ゆっくり、はっきり」のお願いも、改めて思い出してください。</p></div><div class="w-1/2"><img src="https://placehold.co/400x300/fecdd3/9f1239?text=家族で来店" class="rounded-lg shadow-md w-full h-auto" alt="家族で来店するイメージ画像"></div></div></div></section>
+            <section><p class="page-header">P.24【第5回】目的</p><h2>最高のパートナーを決定しましょう</h2><p class="text-xl text-center">1ヶ月の旅を振り返り、これからのパートナーを決めます。</p><div class="mt-6 p-6 bg-gray-50 rounded-xl"><h3 class="text-2xl font-bold text-center" style="color:var(--dark-blue)">最終決定のためのチェックリスト</h3><ul class="space-y-4 mt-6 text-xl text-left"><li class="flex items-center"><span class="text-3xl mr-4">✅</span>聞きたい場面での満足度は？ (例: 会食は楽しめたか)</li><li class="flex items-center"><span class="text-3xl mr-4">✅</span>日常生活での使い心地は？ (例: テレビの音はどうか)</li><li class="flex items-center"><span class="text-3xl mr-4">✅</span>一日つけていて快適だったか？ (例: 痛み・かゆみはないか)</li><li class="flex items-center"><span class="text-3xl mr-4">✅</span>予算とのバランスは納得できるか？</li><li class="flex items-center"><span class="text-3xl mr-4">✅</span>この補聴器と、これからの生活を共にしたいか？</li></ul></div></section>
+            <section><p class="page-header">P.25【第5回】もし迷ったら…</p><h2>無理に決めず「原点」に立ち返りましょう</h2><div class="key-message !text-3xl">なぜ、補聴器を試そうと思いましたか？</div><div class="text-center mt-8"><p class="text-xl">決断を急ぐ必要はありません。私たちのゴールは、補聴器を売ることではありません。<br>あなたの本当の気持ちを、私たちに聞かせてください。</p><div class="flex justify-center items-center gap-4 mt-8 text-2xl font-bold"><div class="bg-sky-100 text-sky-800 p-4 rounded-full shadow">認知症予防</div><div class="bg-sky-100 text-sky-800 p-4 rounded-full shadow">家族のため</div><div class="bg-sky-100 text-sky-800 p-4 rounded-full shadow">人生を楽しむ</div></div></div><div class="mt-12 text-center p-4 bg-gray-100 rounded-lg"><p class="font-bold">「この補聴器は手放しても、毎日つけられる自分は手放さないでほしい。<br>せっかくの気持ちがもったいないから」</p></div></section>
+            <section><p class="page-header">P.26 コラム</p><div class="column-card h-full flex flex-col justify-center"><h2 class="text-4xl font-bold text-amber-800">試聴効果を倍増させる「ひとことメモ」のススメ</h2><div class="key-message !bg-amber-100 !text-amber-900 mt-6 !text-3xl">あなたの「感じたこと」が、最高の調整データになります。</div><div class="grid grid-cols-2 gap-8 items-center mt-6"><div class="text-center text-8xl">📝</div><div class="p-4 bg-white rounded-lg shadow-md text-left"><h4 class="font-bold text-lg">【かんたんメモ・テンプレート】</h4><p class="mt-2"><strong>嬉しかったこと(〇)：</strong> 鳥の声が聞こえた！</p><p><strong>困ったこと(△)：</strong> 食器の音が気になる。</p><p class="mt-2">このような具体的なメモが、より良い調整に繋がります。</p></div></div></div></section>
+            <section class="!bg-teal-50"><p class="page-header">P.27 第3章 導入</p><div class="flex flex-col justify-center h-full text-center"><h2 class="!text-6xl" style="color: var(--dark-blue);">第3章<br>納品と、その先へ<br>(新生活編)</h2><div class="w-32 h-1.5 mx-auto my-8" style="background-color: var(--medium-blue);"></div><p class="text-2xl max-w-2xl mx-auto">お引き渡しはゴールではありません。<br>ここからが、あなたの新しい聞こえのある生活の、本当のスタートです。</p></div></section>
+            <section><p class="page-header">P.28 お引き渡し</p><h2>ここからが本当のスタートです</h2><div class="key-message !text-2xl">万が一の時も安心。2つの保証でしっかりサポートします。</div><div class="grid grid-cols-2 gap-8 items-center"><div class="text-center"><img src="https://placehold.co/500x350/E0F2F7/00458B?text=お渡しする品々" class="rounded-lg shadow-md mx-auto" alt="補聴器、充電器、ケースなどの納品物一式"></div><div class="space-y-6"><div class="flex items-center p-4 bg-gray-100 rounded-lg"><div class="text-5xl mr-4">🛡️</div><div><h3 class="font-bold text-xl" style="color:var(--dark-blue)">通常保証 (2年間)</h3><p>普通に使っていて動かなくなった、という場合の自然故障に対応します。</p></div></div><div class="flex items-center p-4 bg-gray-100 rounded-lg"><div class="text-5xl mr-4">🛡️</div><div><h3 class="font-bold text-xl" style="color:var(--dark-blue)">紛失・破損保証 (1年間)</h3><p>なくしたり、修理できないほど壊してしまったりした場合も安心の保証です。</p></div></div></div></div></section>
+            <section><p class="page-header">P.29 1ヶ月後チェック①</p><h2>「うるさい音」は、脳が元気な証拠です</h2><div class="key-message !text-3xl">聞こえなかった生活音が聞こえるのは、<br>脳が目覚めた<span class="text-4xl">「良い兆候」</span>です。</div><div class="grid grid-cols-2 gap-8 items-center"><div class="text-center p-8"><p class="text-9xl">😴🧠 ➡️ 😄🧠🎶</p><p class="text-2xl font-bold mt-4">眠っていた脳が、再び音に気づき始めました。</p></div><div class="text-lg text-left"><p>床のきしみ、鳥のさえずり…。最初は「雑音」に感じるかもしれません。</p><p class="mt-4">でもそれは、白内障の手術後に今まで見えなかったホコリが見えるようになるのと同じ。10年前には当たり前に聞こえていた音なのです。</p><p class="mt-4 font-bold">脳が音を仕分けるトレーニングをしている最中です。じきに慣れていきます。</p></div></div></section>
+            <section><p class="page-header">P.30 1ヶ月後チェック②</p><h2>「つけても変わらない？」それは順応のサイン</h2><div class="key-message !text-3xl">補聴器の効果が当たり前になった、<br>脳が順応した<span class="text-4xl">「素晴らしいサイン」</span>です。</div><div class="grid grid-cols-2 gap-8 items-center"><div class="text-lg text-left"><p>「効果がなくなった？」と不安になるかもしれませんが、ご安心ください。</p><p class="mt-4">あなたの脳が「よく聞こえる状態」を普通だと認識し始めた証拠です。脳が聞こえを補う働きを取り戻し、効率的に音を処理できるようになったのです。</p><p class="mt-4 font-bold text-red-600">補聴器はメガネと違い、ご購入後もいつでも調整が可能です。気になることは何でもご相談ください。</p></div><div class="text-center p-8"><p class="text-9xl">🧠🤝🦾</p><p class="text-2xl font-bold mt-4">脳と補聴器が、すっかり仲良しに。</p></div></div></section>
+            <section class="!bg-teal-50"><p class="page-header">P.31 第4章 導入</p><div class="flex flex-col justify-center h-full text-center"><h2 class="!text-6xl" style="color: var(--dark-blue);">第4章<br>アフターケアとQ&A</h2><div class="w-32 h-1.5 mx-auto my-8" style="background-color: var(--medium-blue);"></div><p class="text-2xl max-w-2xl mx-auto">あなたのパートナーを大切にする方法と、よくある疑問にお答えします。<br>私たちとの、生涯にわたるお付き合いの始まりです。</p></div></section>
+            <section><p class="page-header">P.32 メンテナンス</p><h2>補聴器の「車検」と、5年という「寿命」の話</h2><div class="key-message !text-2xl">3ヶ月に一度の定期健診で、大切なパートナーを長持ちさせましょう。</div><div class="grid grid-cols-2 gap-8 items-center mt-12"><div class="text-center border-r-2 pr-8"><p class="text-9xl">👨‍🔧🔍🦾</p><h3 class="font-bold text-2xl mt-4" style="color:var(--dark-blue)">3ヶ月に一度の定期健診</h3><p class="mt-2">内部のクリーニングや性能チェックで、最高の状態を保ちます。</p></div><div class="text-center"><p class="text-9xl">🗓️➡️♻️</p><h3 class="font-bold text-2xl mt-4" style="color:var(--dark-blue)">寿命の目安は約5年</h3><p class="mt-2">5年で壊れる訳ではありませんが、性能維持の目安です。乗り換えの良いタイミングです。</p></div></div></section>
+            <section><p class="page-header">P.33 特別付録</p><h2>補聴器まるわかり大辞典</h2><p class="text-xl text-center">あなたの「？」に、すべてお答えします。</p><div class="mt-8 p-8 bg-gray-50 rounded-xl max-w-3xl mx-auto text-left"><h3 class="text-3xl font-bold text-center mb-6" style="color:var(--dark-blue)">【INDEX】</h3><ul class="text-2xl space-y-4"><li><a href="#/34" class="text-blue-600 hover:underline"><strong>価格編</strong> (P.34~)</a></li><li><a href="#/37" class="text-blue-600 hover:underline"><strong>機能・性能編</strong> (P.38~)</a></li><li><a href="#/42" class="text-blue-600 hover:underline"><strong>生活・使い方編</strong> (P.44~)</a></li><li><a href="#/45" class="text-blue-600 hover:underline"><strong>脳と科学編</strong> (P.46~)</a></li></ul></div></section>
+            <section><p class="page-header">P.34【価格編】Q&A</p><h2>Q. 正直、値段で何が違うのですか？</h2><div class="key-message !text-3xl">A. 主な違いは「騒がしい場所での快適さ」です。</div><p class="text-lg text-center">第1章の復習です。価格差は、聞きたい会話と雑音を切り分けるコンピューター性能の差です。</p><div class="chart-container h-[55vh]"><canvas id="p34_pricePerformanceChart"></canvas></div></section>
+            <section><p class="page-header">P.35【価格編】Q&A</p><h2>Q. 両耳は絶対に必要なの？片耳じゃダメ？</h2><div class="key-message !text-3xl">A. 最高の聞こえのためには「両耳」での装用を強くお勧めします。</div><div class="grid grid-cols-2 gap-8 items-center"><div class="text-lg text-left"><p>耳は2つで1つのチームです。両耳で聞くことで…</p><ul class="list-disc list-inside mt-4 space-y-2"><li class="font-bold">音の方向が分かりやすい</li><li class="font-bold">騒がしい中でも言葉が聞き取りやすい</li><li class="font-bold">聞こえが立体的になり、疲れにくい</li></ul><p class="mt-4">片耳より、両耳にそこそこの機種をつける方が満足度は高くなります。</p></div><div class="text-center"><img src="https://placehold.co/500x350/E0F2F7/00458B?text=両耳で立体的な聞こえ" class="rounded-lg shadow-md mx-auto" alt="左右の耳から入った音が脳で統合され、立体的な音像を結ぶイメージ"></div></div></section>
+            <section><p class="page-header">P.36【機能編】Q&A</p><h2>Q. 友人から「補聴器はうるさいだけ」と聞きました…</h2><div class="key-message !text-3xl">A. それは昔の補聴器か、調整が合っていないのかも。</div><div class="grid grid-cols-2 gap-8 items-start mt-8"><div class="text-center p-4 bg-gray-100 rounded-lg"><h3 class="font-bold text-xl">昔の補聴器</h3><img src="https://placehold.co/400x250/FFCDD2/B71C1C?text=会話も雑音も全部増幅！" class="rounded-lg shadow-md mx-auto my-4" alt="昔の補聴器のイメージ"><p>会話も雑音も、全ての音を一緒に大きくしてしまい、脳が混乱しがちでした。</p></div><div class="text-center p-4 bg-blue-50 rounded-lg"><h3 class="font-bold text-xl">今の補聴器</h3><img src="https://placehold.co/400x250/E0F7FA/006064?text=会話はクリア、雑音は抑制" class="rounded-lg shadow-md mx-auto my-4" alt="現代の補聴器のイメージ"><p>聞きたい会話と雑音を判別し、雑音だけを賢く抑えるので、快適さが全く違います。</p></div></div></section>
+            <section><p class="page-header">P.37【機能編】Q&A</p><h2>Q. テレビの音が聞き取りにくいです。</h2><div class="key-message !text-3xl">A. 専用の調整や、音を直接飛ばす便利な機器があります。</div><div class="grid grid-cols-2 gap-8 items-center"><div class="text-lg text-left"><p>テレビの音はBGMや効果音が多く、聞き取りが難しい場面の一つです。</p><p class="mt-4">補聴器をテレビ向きに調整したり、<span class="font-bold text-xl" style="color:var(--medium-blue)">「TVアダプター」</span>を使えば、周りを気にせずクリアな音声を楽しめます。</p></div><div class="text-center"><img src="https://placehold.co/500x350/E0F2F7/00458B?text=テレビの音を直接補聴器へ" class="rounded-lg shadow-md mx-auto" alt="テレビから補聴器へワイヤレスで音声が飛ぶイメージ"></div></div></section>
+            <section><p class="page-header">P.38【機能編】Q&A</p><h2>Q. 充電式と電池式、どっちが良い？</h2><div class="key-message !text-3xl">A. あなたのライフスタイルに合わせて選びましょう。</div><div class="comparison-table"><div class="comparison-card"><h4 style="color:var(--dark-blue)">🔋 充電式</h4><ul><li><span class="font-bold">◎ 手間が少ない</span>（置くだけ充電）</li><li><span class="font-bold">◎ 経済的</span>（電池代不要）</li><li><span class="font-bold">◎ 環境にやさしい</span></li></ul></div><div class="comparison-card"><h4 style="color:var(--dark-blue)">+ 電池式</h4><ul><li><span class="font-bold">◎ より小型化</span>が可能</li><li><span class="font-bold">◎ 充電切れの心配なし</span>（予備があれば安心）</li><li><span class="font-bold">◎ 比較的安価</span></li></ul></div></div></section>
+            <section><p class="page-header">P.39【機能編】Q&A</p><h2>Q. 日本製、スイス製、メーカーで何が違う？</h2><div class="key-message !text-3xl">A. 世界のデータを持つ海外製は「失敗しにくい」強みがあります。</div><div class="grid grid-cols-2 gap-8 items-center"><div class="text-center"><img src="https://placehold.co/500x350/E0F2F7/00458B?text=世界のデータをチップに集約" class="rounded-lg shadow-md mx-auto" alt="地球儀と多様な人々のデータが補聴器チップに集約されるイメージ"></div><div class="text-lg text-left"><p>海外大手メーカーは、世界中の様々な人種、言語、生活環境の膨大なデータを基に開発を行っています。</p><p class="mt-4">そのため、多様な音環境への対応力が高く、結果として多くの方にとって「失敗しにくい」選択肢となります。</p></div></div></section>
+            <section><p class="page-header">P.40【生活編】Q&A</p><h2>Q. 落としたり、なくしたりしないか心配です。</h2><div class="key-message !text-3xl">A. ご安心ください。そのための対策と保証があります。</div><div class="grid grid-cols-2 gap-8 items-center mt-8"><div class="text-center p-4 bg-gray-100 rounded-lg"><img src="https://placehold.co/400x250/E0F7FA/006064?text=落下防止ストラップ" class="rounded-lg shadow-md mx-auto my-4" alt="落下防止ストラップのイメージ"><h3 class="font-bold text-xl mt-2">対策：落下防止ストラップ</h3><p>万が一外れても、下に落ちないので安心です。</p></div><div class="text-center p-4 bg-gray-100 rounded-lg"><p class="text-9xl">🛡️</p><h3 class="font-bold text-xl mt-2">安心：紛失保証（1年間）</h3><p>万が一の紛失にも、保証で備えられます。</p></div></div></section>
+            <section><p class="page-header">P.41【生活編】Q&A</p><h2>Q. 保管する時の注意点は？</h2><div class="key-message !text-3xl">A. 必ず「専用のハードケース」で保管してください。</div><div class="grid grid-cols-2 gap-8 items-center mt-8"><div class="text-center p-4 bg-blue-50 rounded-lg"><p class="text-9xl">👍</p><img src="https://placehold.co/400x200/E0F2F7/00458B?text=専用ハードケース" class="rounded-lg shadow-md mx-auto my-4" alt="専用ハードケース"><h3 class="font-bold text-xl mt-2">◎ 正しい保管方法</h3></div><div class="text-center p-4 bg-red-50 rounded-lg"><p class="text-9xl">👎</p><img src="https://placehold.co/400x200/FFCDD2/B71C1C?text=ポケット・布袋" class="rounded-lg shadow-md mx-auto my-4" alt="ポケットや布袋"><h3 class="font-bold text-xl mt-2">× やってはいけない保管方法</h3></div></div><p class="text-xl text-center mt-6">ポケットや布袋に入れると、圧力がかかり変形の原因になります。</p></section>
+            <section><p class="page-header">P.42【生活編】Q&A</p><h2>Q. 周囲には、どう協力してもらえば良いですか？</h2><div class="column-card h-full flex flex-col justify-center"><h2 class="text-4xl font-bold text-amber-800">A.「大きな声」ではなく「ゆっくり、はっきり」と伝えてもらうのが一番です。</h2><div class="grid grid-cols-2 gap-8 items-center mt-8"><div class="text-center"><img src="https://placehold.co/400x250/FFCDD2/B71C1C?text=大声・早口" class="rounded-lg shadow-md mx-auto" alt="大声で話すメガホンのイラスト"><p class="text-5xl font-bold text-red-600 mt-2">❌</p></div><div class="text-center"><img src="https://placehold.co/400x250/E0F7FA/006064?text=普通の声で、ゆっくり" class="rounded-lg shadow-md mx-auto" alt="にこやかな口元のイラスト"><p class="text-5xl font-bold text-green-600 mt-2">⭕</p></div></div><p class="text-xl leading-relaxed mt-6 font-bold text-center">この本のP.13を、ぜひご家族と一緒にご覧ください。</p></div></section>
+            <section><p class="page-header">P.43【脳と科学編】Q&A</p><h2>Q.「聞こえにくい」と「言葉が聞き取れない」は違う？</h2><div class="key-message !text-3xl">A.「音」と「言葉」は、脳が処理する場所が違うのです。</div><div class="grid grid-cols-2 gap-8 items-center mt-8"><div class="text-lg text-left"><p>補聴器は、聞こえにくい<span class="font-bold">「音」</span>を脳に届けます。</p><p class="mt-4">その音を<span class="font-bold">「言葉」</span>として理解するのは、あなたの脳の役割です。</p><p class="mt-4">補聴器は、脳が言葉を<span class="font-bold text-xl" style="color:var(--medium-blue)">「推測」</span>する手助けをするのです。</p></div><div class="text-center"><img src="https://placehold.co/500x350/E0F2F7/00458B?text=音→脳の別々の部屋→言葉" class="rounded-lg shadow-md mx-auto" alt="音が脳の別の部屋で処理され言葉になるイメージ"></div></div></section>
+            <section><p class="page-header">P.44【脳と科学編】Q&A</p><h2>Q. なぜ補聴器に「慣れる」のに時間がかかるの？</h2><div class="key-message !text-3xl">A. それは、あなたの脳が「忘れてしまった世界」を思い出しているからです。</div><div class="grid grid-cols-2 gap-8 items-center mt-8"><div class="text-center"><p class="text-9xl">🧗‍♀️</p><p class="text-2xl font-bold mt-4">再び「岩山」登りです</p></div><div class="text-lg text-left"><p>「慣れる」とは、10年前には当たり前だった<span class="font-bold">「普通の状態に戻ること」</span>です。</p><p class="mt-4">静かな世界に慣れてしまった脳が、再び音を仕分けるための再教育期間なのです。</p><p class="mt-4 font-bold">焦らず、脳の成長を見守ってあげましょう。</p></div></div></section>
+            <section><p class="page-header">P.45 おわりに</p><h2>あなたの聞こえる未来のために</h2><p class="text-2xl text-center">ここからが、本当のお付き合いの始まりです。</p><div class="mt-8 flex items-center gap-8 bg-gray-50 p-6 rounded-lg"><div class="w-1/2"><img src="https://placehold.co/500x400/00458B/FFFFFF?text=笑顔のスタッフ" class="rounded-lg" alt="スタッフの集合写真"></div><div class="w-1/2 text-left"><h3 class="text-3xl font-black">補聴器のご相談・メンテナンスは<br>いつでもお気軽にどうぞ</h3><div class="mt-4"><p class="text-2xl font-bold">モカ金剛</p><p class="text-lg mt-1">〒584-0073 大阪府富田林市寺池台1-9-60</p><p class="text-lg">金剛ショッピングモール 2F</p><p class="text-lg mt-2"><strong>電話番号：</strong>0721-29-8133</p><p class="text-lg"><strong>営業時間：</strong>10:00～19:00（木曜定休）</p></div><div class="mt-4"><img src="https://placehold.co/150x150/FFFFFF/000000?text=LINE QR" class="inline-block" alt="LINEのQRコード"></div></div></div></section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            width: 1280,
+            height: 720,
+            margin: 0.04
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const brilliantBlues = {
+                dark: 'rgba(0, 69, 139, 1)',
+                medium: 'rgba(0, 117, 196, 1)',
+                bright: 'rgba(0, 168, 243, 1)',
+                light: 'rgba(137, 214, 255, 1)',
+                darkAlpha: 'rgba(0, 69, 139, 0.7)',
+                mediumAlpha: 'rgba(0, 117, 196, 0.7)',
+                brightAlpha: 'rgba(0, 168, 243, 0.7)',
+                lightAlpha: 'rgba(137, 214, 255, 0.7)',
+            };
+            
+            const chartTooltipCallback = { plugins: { tooltip: { callbacks: { title: (tooltipItems) => Array.isArray(tooltipItems[0]?.chart.data.labels[tooltipItems[0]?.dataIndex]) ? tooltipItems[0]?.chart.data.labels[tooltipItems[0]?.dataIndex].join(' ') : tooltipItems[0]?.chart.data.labels[tooltipItems[0]?.dataIndex] } } } };
+            
+            Chart.defaults.font.family = "'Noto Sans JP', sans-serif";
+            Chart.defaults.font.size = 14;
+
+            const p1_failureRateCtx = document.getElementById('p1_failureRateChart');
+            if (p1_failureRateCtx) { new Chart(p1_failureRateCtx, { type: 'doughnut', data: { labels: ['継続利用', '使用断念'], datasets: [{ data: [75, 25], backgroundColor: [brilliantBlues.medium, '#ef4444'], borderColor: '#fff', borderWidth: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: chartTooltipCallback.plugins.tooltip } } }); }
+
+            const p7_declineCurveCtx = document.getElementById('p7_declineCurveChart');
+            if (p7_declineCurveCtx) { new Chart(p7_declineCurveCtx, { type: 'line', data: { labels: ['現在', '1年後', '3年後', '5年後', '10年後'], datasets: [{ label: '対策をしない場合', data: [100, 90, 75, 50, 20], borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', fill: true, tension: 0.1 }, { label: '補聴器を使った場合（下げ止め）', data: [100, 99, 97, 94, 88], borderColor: brilliantBlues.medium, backgroundColor: brilliantBlues.mediumAlpha, fill: true, tension: 0.1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { tooltip: chartTooltipCallback.plugins.tooltip }, scales: { y: { title: { display: true, text: '聞こえる力（イメージ）' }, min: 0, max: 110 }, x: { title: { display: true, text: '経過年数' } } } } }); }
+            
+            const createPricePerformanceChart = (canvasId) => {
+                const ctx = document.getElementById(canvasId);
+                if (ctx) { 
+                    new Chart(ctx, { 
+                        type: 'bar', 
+                        data: { 
+                            labels: ['基本クラス', '標準クラス', '高性能クラス', '最上位クラス'], 
+                            datasets: [
+                                { label: '静かな場所での快適さ', data: [85, 90, 95, 98], backgroundColor: brilliantBlues.lightAlpha, borderColor: brilliantBlues.light, borderWidth: 2 }, 
+                                { label: '騒がしい場所での快適さ', data: [30, 55, 80, 95], backgroundColor: brilliantBlues.mediumAlpha, borderColor: brilliantBlues.medium, borderWidth: 2 }
+                            ] 
+                        }, 
+                        options: { 
+                            responsive: true, 
+                            maintainAspectRatio: false, 
+                            plugins: { tooltip: chartTooltipCallback.plugins.tooltip }, 
+                            scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: '会話の快適度（イメージ）' } } } 
+                        } 
+                    }); 
+                }
+            };
+            createPricePerformanceChart('p11_pricePerformanceChart');
+            createPricePerformanceChart('p34_pricePerformanceChart');
+
+            const p18_lifeenvCtx = document.getElementById('p18_lifeenvChart');
+            if (p18_lifeenvCtx) { new Chart(p18_lifeenvCtx, { type: 'pie', data: { labels: ['静かな環境', '会話のある環境', '騒がしい環境'], datasets: [{ data: [85, 10, 5], backgroundColor: [brilliantBlues.light, brilliantBlues.medium, '#FBBF24'], borderColor: '#fff', borderWidth: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: chartTooltipCallback.plugins.tooltip, title: { display: true, text: '生活環境データのサンプル', font: { size: 18 } } } } }); }
+            
+            const p20_clarityScoreCtx = document.getElementById('p20_clarityScoreChart');
+            if(p20_clarityScoreCtx) { new Chart(p20_clarityScoreCtx, { type: 'bar', data: { labels: ['言葉の聞き取りテスト'], datasets: [ { label: '補聴器なし', data: [55], backgroundColor: 'rgba(239, 68, 68, 0.7)', borderColor: '#ef4444', borderWidth: 2 }, { label: '補聴器あり', data: [85], backgroundColor: brilliantBlues.mediumAlpha, borderColor: brilliantBlues.medium, borderWidth: 2 } ] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', scales: { x: { beginAtZero: true, max: 100, title: { display: true, text: '正解率（％）' } } }, plugins: { legend: { position: 'bottom' }, title: { display: true, text: '言葉の聞き取りやすさの変化', font: {size: 18} } } } }); }
+
+        });
+    </script>
+</body>
+</html>
