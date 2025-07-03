@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご提案資料 | ケーススタディ</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper.js for Slides -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* キャプチャ画像の緑を背景色として設定 */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #44544A; 
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%; /* aspect-ratioで高さを制御するため100%に変更 */
+            background-color: #f9fafb; /* bg-gray-50 */
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #1f2937; /* text-gray-800 */
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        /* スライドのナビゲーションボタンの色を青に変更 */
+        .swiper-button-next, .swiper-button-prev {
+            color: #2563eb; /* blue-600 */
+        }
+        /* スライドのページネーションのアクティブな点の色を青に変更 */
+        .swiper-pagination-bullet-active {
+            background: #2563eb; /* blue-600 */
+        }
+        .slide-title {
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+        @media (min-width: 768px) {
+            .slide-title {
+                font-size: 4.5rem;
+            }
+        }
+        /* ハイライトの色を緑に変更 */
+        .highlight {
+            background: linear-gradient(to top, rgba(74, 222, 128, 0.4) 40%, transparent 40%); /* green-400 */
+            padding: 0 0.2em;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 md:p-8">
+
+    <!-- スライド全体を囲むコンテナ -->
+    <div class="w-full max-w-6xl aspect-video shadow-2xl rounded-lg overflow-hidden">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 1: Case Study Intro -->
+                <div class="swiper-slide">
+                    <div class="max-w-4xl">
+                         <p class="text-lg md:text-xl text-blue-600 mb-4">具体例</p>
+                        <h2 class="slide-title mb-6">言葉で、<br>価値はどう変わるか</h2>
+                        <p class="text-lg md:text-xl text-gray-600">世界的な動物用医薬品企業<a href="https://www.zoetis.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800 transition-colors">Zoetis社</a>の企業理念を題材に、<br>翻訳アプローチによる印象の違いをご覧ください。</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Source Text -->
+                <div class="swiper-slide">
+                    <div class="max-w-4xl w-full text-left">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-500">題材（Source Text）</h3>
+                        <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+                            <p class="text-base md:text-lg text-gray-700 leading-relaxed">
+                                As the world’s leading animal health company, we are driven by a singular purpose: to nurture our world and humankind by advancing care for animals. After nearly 70 years of innovating ways to predict, prevent, detect, and treat animal illness, we continue to stand by those raising and caring for animals around the globe – from livestock farmers to veterinarians and pet owners.
+                            </p>
+                            <p class="text-sm text-gray-400 mt-4 text-right">出典: Zoetis Inc. - Our Purpose and Commitments</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Before (Full Text) -->
+                <div class="swiper-slide">
+                    <div class="max-w-4xl w-full text-left">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-red-500">Before: AI・直訳版</h3>
+                        <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+                            <p class="text-base md:text-lg text-gray-700 italic leading-relaxed">
+                                世界有数のアニマルヘルス企業として、私たちは動物のケアを進歩させることによって私たちの世界と人類を育むという一つの目的によって動かされています。動物の病気を予測、予防、発見、治療する方法を革新してきた70年近くを経て、私たちは家畜農家から獣医師、ペットの飼い主まで、世界中で動物を育て、世話をしている人々のそばに立ち続けています。
+                            </p>
+                        </div>
+                        <div class="mt-6 bg-red-50 p-4 rounded-lg border border-red-200">
+                            <p class="text-xl font-bold text-center text-red-800">【課題】</p>
+                            <p class="text-lg text-red-700 text-center">意味は通じますが、翻訳特有の硬さがあり、文章が冗長です。特に「私たちの世界と人類を育む」といった表現は、日本のビジネスシーンではやや大げさで、共感を得にくい可能性があります。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: After (Full Text) -->
+                <div class="swiper-slide">
+                    <div class="max-w-4xl w-full text-left">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-green-600">After: 提案版</h3>
+                        <div class="bg-white p-8 rounded-xl border-2 border-green-500 shadow-lg">
+                            <p class="text-base md:text-lg text-gray-800 leading-relaxed">
+                                私たちは、アニマルヘルス領域のグローバルリーダーとして、一つの使命を追求しています。それは、動物医療の発展を通じて、この世界と人々の暮らしを支えることです。
+                                <br><br>
+                                70年近くにわたり、私たちは動物の疾病を予測・予防・発見・治療するための技術革新を続けてきました。そしてこれからも、畜産農家の方々から、獣医師、そしてペットオーナーの皆様まで。動物を愛し、その命を育む全ての方々と共に歩んでまいります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: The "Why" - Detailed Points -->
+                <div class="swiper-slide">
+                    <div class="max-w-5xl w-full text-left">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">提案のポイント（翻訳の意図）</h3>
+                        <div class="space-y-4">
+                            <div class="p-6 bg-white rounded-lg border-l-4 border-green-500 shadow-sm">
+                                <h4 class="font-bold text-xl text-green-700 mb-2">Point 1: 企業としての「使命」を明確化</h4>
+                                <p class="text-gray-700">`driven by a singular purpose` を、より主体的で強い意志を感じさせる「一つの使命を追求しています」と表現。企業の揺るぎない姿勢を示し、信頼感を醸成します。</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-lg border-l-4 border-green-500 shadow-sm">
+                                <h4 class="font-bold text-xl text-green-700 mb-2">Point 2: ターゲットに響く言葉への「価値の再翻訳」</h4>
+                                <p class="text-gray-700">`to nurture our world and humankind` という壮大な表現を、「この世界と人々の暮らしを支えることです」と翻訳。日本のターゲットがより身近に感じ、共感しやすい「社会への貢献」という価値観に合わせた意図的な表現変更です。</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-lg border-l-4 border-green-500 shadow-sm">
+                                <h4 class="font-bold text-xl text-green-700 mb-2">Point 3: 専門家としての信頼性とパートナーシップの演出</h4>
+                                <p class="text-gray-700">`stand by those` を「全ての方々と共に歩んでまいります」と表現することで、一方的なサービス提供者ではなく、顧客と手を取り合う「信頼できるパートナー」としての姿勢を明確に打ち出しました。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: Call to Action -->
+                <div class="swiper-slide">
+                    <div class="max-w-4xl">
+                        <h2 class="slide-title mb-6">ぜひ一度、<br>お話をお聞かせください。</h2>
+                        <p class="text-lg md:text-xl text-gray-600 mb-8">貴社の日本でのご成功の一助となれましたら幸いです。<br>最適なコミュニケーション戦略をご提案します。</p>
+                        <a href="mailto:your-email@example.com" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-xl transition-transform transform hover:scale-105 inline-block">
+                            無料で相談する
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: false,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Keyboard control
+            keyboard: {
+                enabled: true,
+            },
+        });
+    </script>
+
+</body>
+</html>
