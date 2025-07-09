@@ -15,7 +15,7 @@
         }
         .page-container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1200px; /* A4 width at ~144 DPI */
             margin: 0 auto;
         }
         .a4-page {
@@ -23,6 +23,10 @@
             padding: 2rem;
             margin: 1.5rem auto;
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            /* A4 aspect ratio */
+            width: 210mm;
+            min-height: 297mm;
+            box-sizing: border-box;
         }
         .hero-bg {
             background: linear-gradient(120deg, rgba(239, 246, 255, 0.95) 0%, rgba(219, 234, 254, 0.95) 100%), url('https://images.unsplash.com/photo-1629904993822-1f4a1854333c?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
@@ -33,33 +37,47 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
 
-        /* --- Print Styles (More Aggressive) --- */
+        /* --- Print Styles --- */
         @media print {
             body {
-                background-color: #FFFFFF !important;
+                background-color: white !important;
             }
-            .page-container, .a4-page {
-                margin: 0 !important;
-                padding: 1.5rem !important;
-                box-shadow: none !important;
-                border: none !important;
+            .page-container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
             }
-            /* Force printing of background colors and images on specific elements */
-            .hero-bg, .bg-blue-600, .bg-red-50, .bg-blue-50, .bg-green-50, .bg-amber-50, .bg-teal-50, .bg-gray-100, .bg-gray-50, .bg-gradient-to-r, .bg-white {
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                padding: 1.5cm; /* Adjust padding for typical print margins */
+                width: 100%;
+                min-height: initial;
+                page-break-after: always; /* Ensure each .a4-page starts on a new sheet */
+            }
+            .a4-page:last-child {
+                page-break-after: auto;
+            }
+            /* Universal rule to force printing background colors and images */
+            * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
             /* Fallback for gradient text to ensure readability in PDF */
             .gradient-text {
                 background: none !important;
-                background-image: none !important;
                 color: #1e3a8a !important;
-                -webkit-background-clip: initial !important;
                 -webkit-text-fill-color: initial !important;
-            }
-            img {
-                page-break-inside: avoid;
             }
         }
     </style>
@@ -67,13 +85,13 @@
 <body class="bg-slate-50">
 
     <div class="page-container">
-        <!-- Page 1: Front -->
+        
         <div class="a4-page">
             <header class="hero-bg rounded-xl p-10 text-center">
                  <div class="flex justify-center items-center mb-4">
                     <img src="https://g2dx.com/wp-content/uploads/2025/07/logo_mappartner%E3%83%9E%E3%83%83%E3%83%97%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC.2.png" alt="ドクターマップパートナー ロゴ" class="h-16">
                 </div>
-                <h1 class="text-4xl md:text-5xl font-black text-blue-900 leading-tight drop-shadow-lg">貴社のクライアント（歯科医院）へ、<br>新たな価値提供の選択肢を。</h1>
+                <h1 class="text-4xl md:text-5xl font-black text-blue-900 leading-tight drop-shadow-lg">貴社のクライアント（歯科医院）へ<br>新たな価値提供の選択肢を。</h1>
                 <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                     「集客」の、その先へ。<br>医院経営の根幹を支える、競争優位性の高いサービスを取り扱いませんか？
                 </p>
@@ -131,9 +149,7 @@
             </main>
         </div>
 
-        <!-- Page 2: Back -->
         <div class="a4-page">
-            <div class="h-8"></div> <!-- Spacer for one line -->
             <header class="text-center mb-4">
                 <h2 class="text-3xl font-bold text-blue-800">導入事例のご紹介</h2>
                 <p class="text-lg text-gray-600 mt-1">Web上の評判が、医院経営を根底から変えた事例です。</p>
