@@ -23,10 +23,6 @@
             padding: 2rem;
             margin: 1.5rem auto;
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            /* A4 aspect ratio */
-            width: 210mm;
-            min-height: 297mm;
-            box-sizing: border-box;
         }
         .hero-bg {
             background: linear-gradient(120deg, rgba(239, 246, 255, 0.95) 0%, rgba(219, 234, 254, 0.95) 100%), url('https://images.unsplash.com/photo-1629904993822-1f4a1854333c?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
@@ -51,8 +47,6 @@
                 background-color: white !important;
             }
             .page-container {
-                width: 100%;
-                max-width: none;
                 margin: 0;
                 padding: 0;
             }
@@ -60,13 +54,7 @@
                 margin: 0;
                 box-shadow: none;
                 border: none;
-                padding: 1.5cm; /* Adjust padding for typical print margins */
-                width: 100%;
-                min-height: initial;
-                page-break-after: always; /* Ensure each .a4-page starts on a new sheet */
-            }
-            .a4-page:last-child {
-                page-break-after: auto;
+                padding: 1.5rem;
             }
             /* Universal rule to force printing background colors and images */
             * {
@@ -85,7 +73,7 @@
 <body class="bg-slate-50">
 
     <div class="page-container">
-        
+        <!-- Page 1: Front -->
         <div class="a4-page">
             <header class="hero-bg rounded-xl p-10 text-center">
                  <div class="flex justify-center items-center mb-4">
@@ -149,7 +137,9 @@
             </main>
         </div>
 
+        <!-- Page 2: Back -->
         <div class="a4-page">
+            <div class="h-8"></div> <!-- Spacer for one line -->
             <header class="text-center mb-4">
                 <h2 class="text-3xl font-bold text-blue-800">導入事例のご紹介</h2>
                 <p class="text-lg text-gray-600 mt-1">Web上の評判が、医院経営を根底から変えた事例です。</p>
