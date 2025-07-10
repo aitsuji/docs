@@ -15,13 +15,13 @@
         }
         .page-container {
             width: 100%;
-            max-width: 1200px; /* A4 width at ~144 DPI */
+            max-width: 1200px;
             margin: 0 auto;
         }
         .a4-page {
             background: white;
-            padding: 2rem;
-            margin: 1.5rem auto;
+            padding: 2.5rem;
+            margin: 2rem auto;
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
         .hero-bg {
@@ -37,195 +37,186 @@
             transition: all 0.3s ease;
         }
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        /* --- Print Styles --- */
-        @media print {
-            body {
-                background-color: white !important;
-            }
-            .page-container {
-                margin: 0;
-                padding: 0;
-            }
-            .a4-page {
-                margin: 0;
-                box-shadow: none;
-                border: none;
-                padding: 1.5rem;
-            }
-            /* Universal rule to force printing background colors and images */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            /* Fallback for gradient text to ensure readability in PDF */
-            .gradient-text {
-                background: none !important;
-                color: #1e3a8a !important;
-                -webkit-text-fill-color: initial !important;
-            }
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body class="bg-slate-50">
 
     <div class="page-container">
-        <!-- Page 1: Front -->
+        <!-- Page 1: The Opportunity -->
         <div class="a4-page">
-            <header class="hero-bg rounded-xl p-10 text-center">
+            <header class="hero-bg rounded-xl p-12 text-center">
                  <div class="flex justify-center items-center mb-4">
-                    <img src="https://g2dx.com/wp-content/uploads/2025/07/logo_mappartner%E3%83%9E%E3%83%83%E3%83%97%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC.2.png" alt="ドクターマップパートナー ロゴ" class="h-16">
+                    <img src="https://g2dx.com/wp-content/uploads/2025/07/logo_mappartner%E3%83%9E%E3%83%83%E3%83%97%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC.2.png" alt="ドクターマップパートナー ロゴ" class="h-20">
                 </div>
-                <h1 class="text-4xl md:text-5xl font-black text-blue-900 leading-tight drop-shadow-lg">貴社のクライアント（歯科医院）へ<br>新たな価値提供の選択肢を。</h1>
-                <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-black text-blue-900 leading-tight drop-shadow-lg">貴社のクライアント（歯科医院）へ、<br>新たな価値提供の選択肢を。</h1>
+                <p class="mt-6 text-xl text-gray-700 max-w-3xl mx-auto">
                     「集客」の、その先へ。<br>医院経営の根幹を支える、競争優位性の高いサービスを取り扱いませんか？
                 </p>
             </header>
 
-            <main class="mt-8">
+            <main class="mt-12">
                 <section>
-                    <h2 class="text-3xl font-bold text-center mb-3">「集客は伸ばしたいが、低評価に手間はかけたくない」</h2>
-                    <p class="text-center text-gray-600 mb-8">これは、多くの歯科医師が抱える共通の、そして切実な悩みです。</p>
+                    <h2 class="text-3xl font-bold text-center mb-4">「集客は伸ばしたいが、低評価に手間はかけたくない」</h2>
+                    <p class="text-center text-gray-600 mb-12">これは、多くの歯科医師が抱える共通の、そして切実な悩みです。</p>
                     
-                    <div class="bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                        <h3 class="text-2xl font-bold mb-6 text-center gradient-text">私たちの提供価値：口コミ改善を軸とした総合支援</h3>
-                        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100">
+                        <h3 class="text-2xl font-bold mb-8 text-center gradient-text">私たちの提供価値：口コミ改善を軸とした総合支援</h3>
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                            <!-- Left: Web Marketing -->
                             <div class="w-full md:w-1/3 text-center md:text-right">
                                 <h4 class="text-xl font-bold text-blue-800">WEBマーケティング支援</h4>
-                                <p class="mt-1 text-gray-600 text-sm">最終目的である「新規来院」に繋げるため、動線を可視化し、数値分析に基づいた改善提案を行います。</p>
+                                <p class="mt-2 text-gray-600">最終目的である「新規来院」に繋げるため、動線を可視化し、数値分析に基づいた改善提案を行います。</p>
                             </div>
+                            
+                            <!-- Center: Core Approach -->
                             <div class="w-full md:w-1/3 text-center order-first md:order-none">
-                                <div class="p-5 bg-blue-600 text-white rounded-full shadow-2xl inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div class="p-6 bg-blue-600 text-white rounded-full shadow-2xl inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg>
                                 </div>
-                                <p class="mt-3 font-bold text-lg">Googleマップ<br>口コミ改善アプローチ</p>
-                                <p class="text-xs text-gray-500">(アンケート・クチコミ返信・継続運用構築)</p>
+                                <p class="mt-4 font-bold text-lg">Googleマップ<br>口コミ改善アプローチ</p>
+                                <p class="text-sm text-gray-500">(アンケート・クチコミ返信・継続運用構築)</p>
                             </div>
+
+                            <!-- Right: Operation Improvement -->
                             <div class="w-full md:w-1/3 text-center md:text-left">
                                 <h4 class="text-xl font-bold text-blue-800">現場オペレーション改善</h4>
-                                <p class="mt-1 text-gray-600 text-sm">スタッフの負担を軽減し、医院全体で無理なく「継続できる体制」を構築。機会損失を防ぎます。</p>
+                                <p class="mt-2 text-gray-600">スタッフの負担を軽減し、医院全体で無理なく「継続できる体制」を構築。機会損失を防ぎます。</p>
                             </div>
                         </div>
-                        <div class="mt-8 grid grid-cols-5 gap-3">
-                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-03-at-12.11.13@2x.png" alt="WEBマーケティング支援のイメージ" class="w-full h-28 object-cover rounded-lg shadow-md">
-                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-09-at-23.51.48@2x.png" alt="口コミ改善アプローチのイメージ" class="w-full h-28 object-cover rounded-lg shadow-md">
-                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-10-at-00.05.47@2x.png" alt="中心的なアプローチのイメージ" class="w-full h-28 object-cover rounded-lg shadow-md">
-                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-09-at-23.58.16@2x.png" alt="現場オペレーション改善の具体例イメージ" class="w-full h-28 object-cover rounded-lg shadow-md">
-                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-03-at-12.12.12@2x.png" alt="現場オペレーション改善のイメージ" class="w-full h-28 object-cover rounded-lg shadow-md">
+                        
+                        <!-- Image Gallery Section -->
+                        <div class="mt-12 grid grid-cols-5 gap-4">
+                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-03-at-12.11.13@2x.png" alt="WEBマーケティング支援のイメージ" class="w-full h-32 object-cover rounded-lg shadow-md transition-transform hover:scale-105">
+                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-09-at-23.51.48@2x.png" alt="口コミ改善アプローチのイメージ" class="w-full h-32 object-cover rounded-lg shadow-md transition-transform hover:scale-105">
+                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-10-at-00.05.47@2x.png" alt="中心的なアプローチのイメージ" class="w-full h-32 object-cover rounded-lg shadow-md transition-transform hover:scale-105">
+                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-09-at-23.58.16@2x.png" alt="現場オペレーション改善の具体例イメージ" class="w-full h-32 object-cover rounded-lg shadow-md transition-transform hover:scale-105">
+                            <img src="https://g2dx.com/wp-content/uploads/2025/07/CleanShot-2025-07-03-at-12.12.12@2x.png" alt="現場オペレーション改善のイメージ" class="w-full h-32 object-cover rounded-lg shadow-md transition-transform hover:scale-105">
                         </div>
                     </div>
                 </section>
-                <section class="mt-10">
-                     <h2 class="text-3xl font-bold text-center mb-3">なぜ、このアプローチが選ばれるのか？</h2>
-                    <p class="text-center text-gray-600 mb-8">一般的なMEO対策では届かない、医院の「本音の課題」を解決するからです。</p>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                            <h3 class="text-2xl font-bold mb-3 gradient-text">医師の「心」を守る</h3>
-                            <p class="text-gray-700 leading-relaxed">正当な評価をされず、心無い口コミに辟易している医師は少なくありません。私たちはその<span class="font-bold">感情に寄り添い、精神的負担を軽減する</span>ことを第一の価値と捉えています。</p>
+                
+                <section class="mt-16">
+                     <h2 class="text-3xl font-bold text-center mb-4">なぜ、このアプローチが選ばれるのか？</h2>
+                    <p class="text-center text-gray-600 mb-12">一般的なMEO対策では届かない、医院の「本音の課題」を解決するからです。</p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100 card-hover">
+                            <h3 class="text-2xl font-bold mb-4 gradient-text">医師の「心」を守る</h3>
+                            <p class="text-gray-700">正当な評価をされず、心無い口コミに辟易している医師は少なくありません。私たちはその<span class="font-bold">感情に寄り添い、精神的負担を軽減する</span>ことを第一の価値と捉えています。</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-xl border border-gray-100">
-                             <h3 class="text-2xl font-bold mb-3 gradient-text">医院の「理想」を形にする</h3>
-                            <p class="text-gray-700 leading-relaxed">私たちの伴走支援により、関わる<span class="font-bold">患者様の層が変わり、医師が理想とする診療スタイルに近づける</span>という副次的効果も生まれています。</p>
+                        <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-100 card-hover">
+                             <h3 class="text-2xl font-bold mb-4 gradient-text">医院の「理想」を形にする</h3>
+                            <p class="text-gray-700">私たちの伴走支援により、関わる<span class="font-bold">患者様の層が変わり、医師が理想とする診療スタイルに近づける</span>という副次的効果も生まれています。</p>
                         </div>
                     </div>
                 </section>
             </main>
         </div>
 
-        <!-- Page 2: Back -->
+        <!-- Page 2: The Value -->
         <div class="a4-page">
-            <div class="h-8"></div> <!-- Spacer for one line -->
-            <header class="text-center mb-4">
+            <header class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-blue-800">導入事例のご紹介</h2>
-                <p class="text-lg text-gray-600 mt-1">Web上の評判が、医院経営を根底から変えた事例です。</p>
+                <p class="text-lg text-gray-600 mt-2">Web上の評判が、医院経営を根底から変えた事例です。</p>
             </header>
             
             <main>
-                <div class="bg-white p-4 rounded-2xl shadow-xl max-w-6xl mx-auto border border-gray-100 mb-4">
-                    <h3 class="text-xl font-bold text-center text-blue-800 mb-3">【実績】佐藤眼科は、なぜ選ばれる医院になったのか？</h3>
-                    <div class="flex flex-col items-center space-y-3">
-                        <div class="w-full grid md:grid-cols-2 gap-4">
-                            <div class="text-center p-3 rounded-lg bg-red-50">
-                                <h4 class="font-bold text-base text-red-800 mb-1">課題</h4>
-                                <p class="text-3xl font-bold text-red-500">★2.3</p>
-                                <p class="text-gray-600 text-xs mt-1">16件の口コミ</p>
-                                <p class="mt-1 text-xs italic text-red-700">心無い評価に院長・スタッフが疲弊。</p>
+                <!-- Case Study 1: Sato Eye Clinic -->
+                <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-6xl mx-auto border border-gray-100 mb-12">
+                    <h3 class="text-2xl font-bold text-center text-blue-800 mb-6">【実績】佐藤眼科は、なぜ選ばれる医院になったのか？</h3>
+                    <div class="flex flex-col items-center space-y-8">
+                        <div class="w-full grid md:grid-cols-2 gap-8">
+                            <div class="text-center p-6 rounded-lg bg-red-50">
+                                <h4 class="font-bold text-xl text-red-800 mb-3">課題</h4>
+                                <p class="text-5xl font-bold text-red-500">★2.3</p>
+                                <p class="text-gray-600 mt-2">16件の口コミ</p>
+                                <p class="mt-4 italic text-red-700">心無い評価に院長・スタッフが疲弊。医院の魅力が伝わっていない。</p>
                             </div>
-                            <div class="text-left p-3 rounded-lg bg-blue-50">
-                                <h4 class="font-bold text-base text-blue-800 mb-1">施策</h4>
-                                <ul class="list-disc list-inside text-xs text-gray-700 space-y-0.5">
+                            <div class="text-left p-6 rounded-lg bg-blue-50">
+                                <h4 class="font-bold text-xl text-blue-800 mb-3">施策</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
                                     <li>満足度の高い患者様へのアンケート実施</li>
                                     <li>口コミ投稿の現場サポート体制の構築</li>
                                     <li>MEOを意識した丁寧な口コミ返信の代行</li>
+                                    <li>GBP情報の全体的な最適化</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="text-center text-2xl text-blue-400 font-light">&darr;</div>
-                        <div class="w-full grid md:grid-cols-2 gap-4 items-center bg-green-50 p-4 rounded-lg">
+                        <div class="text-center text-3xl md:text-5xl text-blue-400 font-light">&darr;</div>
+                        <div class="w-full grid md:grid-cols-2 gap-8 items-center bg-green-50 p-8 rounded-lg">
                             <div class="text-center">
-                                <h4 class="font-bold text-base text-green-800 mb-1">定量成果</h4>
-                                <p class="text-5xl font-bold text-green-600">★4.0</p>
-                                <p class="text-gray-600 text-xs mt-1">118件の口コミ (730%増)</p>
+                                <h4 class="font-bold text-xl text-green-800 mb-3">定量成果</h4>
+                                <p class="text-7xl font-bold text-green-600">★4.0</p>
+                                <p class="text-gray-600 mt-2">118件の口コミ (730%増)</p>
                             </div>
                             <div class="text-center">
-                                 <h4 class="font-bold text-base text-green-800 mb-1">定性成果</h4>
-                                 <blockquote class="text-xs mt-1 text-gray-800 bg-white p-2 rounded-md relative">
-                                    <span class="text-2xl text-green-200 absolute top-0 left-0 -mt-1 -ml-1">“</span>
+                                 <h4 class="font-bold text-xl text-green-800 mb-3">定性成果</h4>
+                                 <blockquote class="text-md mt-4 text-gray-800 bg-white p-4 rounded-md relative">
+                                    <span class="text-4xl text-green-200 absolute top-0 left-0 -mt-2 -ml-2">“</span>
                                     「Webの口コミを見て信頼し、<span class="font-bold">『ここで手術する』と決めて来院される方</span>が増えた」
-                                    <cite class="block text-xs mt-1 text-gray-500 not-italic">— 佐藤眼科 院長先生</cite>
+                                    <cite class="block text-xs mt-2 text-gray-500 not-italic">— 佐藤眼科 院長先生</cite>
                                 </blockquote>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-xl max-w-6xl mx-auto border border-gray-100 mb-4">
-                    <h3 class="text-2xl font-bold text-center text-blue-800 mb-4">【現場改善事例】あいはら歯科・矯正歯科様</h3>
-                     <div class="flex flex-col items-center space-y-4">
-                        <div class="w-full grid md:grid-cols-2 gap-6">
-                            <div class="p-4 rounded-lg bg-amber-50">
-                                <h4 class="font-bold text-lg text-amber-800 mb-2">課題：オペレーションのボトルネック</h4>
-                                <p class="text-gray-700 text-sm">電子カルテ導入後、アンケート依頼のフローが途絶え、口コミの機会損失が発生。「火種が消えかけた」状態に。</p>
+                <!-- Case Study 2: Aihara Dental Clinic -->
+                <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-6xl mx-auto border border-gray-100">
+                    <h3 class="text-2xl font-bold text-center text-blue-800 mb-6">【現場改善事例】あいはら歯科・矯正歯科様</h3>
+                     <div class="flex flex-col items-center space-y-8">
+                        <div class="w-full grid md:grid-cols-2 gap-8">
+                            <div class="p-6 rounded-lg bg-amber-50">
+                                <h4 class="font-bold text-xl text-amber-800 mb-3">課題：オペレーションのボトルネック</h4>
+                                <p class="text-gray-700">電子カルテ導入後、アンケート依頼のフローが途絶え、口コミの機会損失が発生。「火種が消えかけた」状態に。</p>
                             </div>
-                            <div class="p-4 rounded-lg bg-teal-50">
-                                <h4 class="font-bold text-lg text-teal-800 mb-2">施策：オーダーメイドの仕組み構築</h4>
-                                <p class="text-gray-700 text-sm">医師のタスクを<span class="font-bold">受付スタッフに権限移譲</span>。保証書発行などをトリガーに、アンケート依頼を自動化。日々の件数を記録し、<span class="font-bold">成果を可視化</span>する体制を構築。</p>
+                            <div class="p-6 rounded-lg bg-teal-50">
+                                <h4 class="font-bold text-xl text-teal-800 mb-3">施策：オーダーメイドの仕組み構築</h4>
+                                <p class="text-gray-700">医師のタスクを<span class="font-bold">受付スタッフに権限移譲</span>。保証書発行などをトリガーに、アンケート依頼を自動化。日々の件数を記録し、<span class="font-bold">成果を可視化</span>する体制を構築。</p>
                             </div>
                         </div>
-                        <div class="w-full text-center bg-gray-100 p-4 rounded-lg">
-                             <h4 class="font-bold text-lg text-gray-800 mb-2">成果：現場がモチベートされる好循環へ</h4>
-                             <p class="text-gray-700 text-sm">属人性を排除し、医院全体で取り組む文化が再燃。継続的な口コミ獲得と、スタッフのモチベーション向上の基盤が整いました。</p>
+                        <div class="w-full text-center bg-gray-100 p-6 rounded-lg">
+                             <h4 class="font-bold text-xl text-gray-800 mb-3">成果：現場がモチベートされる好循環へ</h4>
+                             <p class="text-gray-700">属人性を排除し、医院全体で取り組む文化が再燃。継続的な口コミ獲得と、スタッフのモチベーション向上の基盤が整いました。</p>
                         </div>
                     </div>
                 </div>
 
-                <section class="mt-4 grid md:grid-cols-5 gap-6 items-center bg-gray-50 p-6 rounded-xl shadow-lg">
+                <section class="mt-16 grid md:grid-cols-5 gap-8 items-center bg-gray-50 p-8 rounded-xl shadow-lg">
                     <div class="md:col-span-2 flex justify-center">
-                        <img src="https://g2dx.com/wp-content/uploads/2025/07/IMG_4518.jpg" alt="担当コンサルタント 辻実成" class="w-40 h-40 rounded-full object-cover shadow-2xl border-4 border-white">
+                        <img src="https://g2dx.com/wp-content/uploads/2025/07/IMG_4518.jpg" alt="担当コンサルタント 辻実成" class="w-56 h-56 rounded-full object-cover shadow-2xl border-4 border-white">
                     </div>
                     <div class="md:col-span-3">
-                        <h3 class="text-xl font-bold">担当コンサルタント<br>辻 実成（つじ みちなり）</h3>
-                        <p class="text-gray-600 mt-2 text-sm leading-relaxed">
-                            「理論だけでは現場は変わらない」「ツールを入れるだけでは意味がない」— これが、長年BtoCの「泥臭い」現場に立ち続けてきた私の信念です。顧客の顔が見えるリアル店舗と、業務を支えるシステム、その両方を深く理解しているからこそ、理想論ではない、現場で本当に使える一手を提案します。
+                        <h3 class="text-2xl font-bold">担当コンサルタント<br>辻 実成（つじ みちなり）</h3>
+                        <p class="text-gray-600 mt-4">
+                            「理論だけでは現場は変わらない」「ツールを入れるだけでは意味がない」— これが、長年BtoCの「泥臭い」現場に立ち続けてきた私の信念です。顧客の顔が見えるリアル店舗と、業務を支えるシステム、その両方を深く理解しているからこそ、理想論ではない、現場で本当に使える一手を提案します。私は単なるアドバイザーではなく、皆様のチームの一員として課題に寄り添い、共に汗をかく「実践家」です。
                         </p>
+                        <div class="mt-6 border-t pt-4">
+                            <h4 class="font-bold text-blue-800">資格・実績</h4>
+                            <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
+                                <li>東京大学 松尾研究室 AI講座 修了</li>
+                                <li>生成AI活用普及協会（GUGA）認定 生成AIパスポート公式講師</li>
+                                <li>AI関連の研修・講演実績 延べ1,500名以上</li>
+                            </ul>
+                        </div>
                     </div>
                 </section>
                 
-                <footer class="mt-4 text-center">
-                     <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white p-6 rounded-xl shadow-2xl">
-                        <h3 class="text-2xl font-bold">この価値を、貴社ならどう活かしますか？</h3>
-                        <p class="mt-3 text-blue-200 max-w-3xl mx-auto text-sm">
+                <footer class="mt-16 text-center">
+                     <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white p-10 rounded-xl shadow-2xl">
+                        <h3 class="text-3xl font-bold">この価値を、貴社ならどう活かしますか？</h3>
+                        <p class="mt-4 text-blue-200 max-w-3xl mx-auto">
                             私たちが提供するのは、完成されたパッケージ商品ではありません。<br>
-                            確かな実績を持つ<span class="font-bold">「事業」</span>と、現場を深く理解する<span class="font-bold">「担当者」</span>という、価値の源泉そのものです。
+                            確かな実績を持つ<span class="font-bold">「事業」</span>と、現場を深く理解する<span class="font-bold">「担当者」</span>という、価値の源泉そのものです。<br>
+                            これらをどのように組み合わせ、貴社のクライアントに最大の価値を届けるか。その戦略や協業の形は、パートナー様と共に創り上げていきたいと考えています。
                         </p>
                      </div>
-                     <p class="mt-4 font-bold text-lg">株式会社メガネの金剛 マップパートナー事業部</p>
-                     <div class="text-gray-600 mt-1 text-sm space-y-0.5">
+                     <p class="mt-12 font-bold text-xl">株式会社メガネの金剛 マップパートナー事業部</p>
+                     <div class="text-gray-600 mt-2 space-y-1">
                         <p>〒599-8122 大阪府堺市東区丈六183-18 1F</p>
                         <p>電話番号: 090-3928-1918（代表 佐藤）</p>
                         <p>メールアドレス: <a href="mailto:mappartner.kongo@gmail.com" class="text-blue-600 hover:underline">mappartner.kongo@gmail.com</a></p>
